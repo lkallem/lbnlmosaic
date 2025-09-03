@@ -76,6 +76,93 @@ The script will:
 - ✅ Configure GitHub Pages deployment
 - ✅ Clean up template files automatically
 
+## Required Assets
+
+### Project Logos
+
+Before running your site, you'll need to add your project logos:
+
+1. **Project Logo** (`assets/logos/project-logo.png`):
+   - Used in the navigation bar
+   - Recommended size: 200x40px (or similar aspect ratio)
+   - Should work well on light backgrounds
+   - PNG format with transparent background preferred
+
+2. **Project Icon** (`assets/logos/project-icon.png`):
+   - Used as the favicon/browser tab icon
+   - Recommended size: 32x32px or 64x64px
+   - PNG format
+   - Should be recognizable at small sizes
+
+### Sponsor Logos
+
+If you have sponsor organizations to display in the footer:
+
+1. **Add logo files** to `assets/logos/`:
+   - Sponsor logos as needed
+
+2. **Configure sponsors** in `_data/sponsors.yaml`
+
+### Default Placeholder Behavior
+
+- If logos are missing, the site will still function
+- Navigation will show text-only branding
+- Browser icon will use default favicon
+- Footer sponsor section will be empty
+
+### Logo Guidelines
+
+For LBNL projects, ensure logos follow the [LBNL Visual Identity Guidelines](https://creative.lbl.gov/visual-identity/):
+
+- Use official LBNL logos when representing Berkeley Lab
+- Maintain proper spacing and proportions
+- Ensure sufficient contrast for accessibility
+- Consider dark mode compatibility
+
+### Quick Logo Setup
+
+```bash
+# Add your logos
+cp /path/to/your/project-logo.png assets/logos/project-logo.png
+cp /path/to/your/project-icon.png assets/logos/project-icon.png
+
+# Add sponsor logos (optional)
+cp /path/to/sponsor1-logo.png assets/logos/sponsor1-logo.png
+cp /path/to/sponsor2-logo.png assets/logos/sponsor2-logo.png
+```
+
+## File Structure After Setup
+
+After running the setup script, you'll have a complete Jekyll site with:
+
+```
+your-project/
+├── _config.yml              # Site configuration
+├── Gemfile                   # Ruby dependencies
+├── index.md                  # Home page
+├── _layouts/
+│   └── default.html          # Main layout with navbar and footer
+├── _includes/
+│   └── navbar.html           # Navigation component
+├── _data/
+│   └── sponsors.yaml         # Sponsor configuration
+├── assets/
+│   ├── css/
+│   │   └── main.scss         # LBNL-styled CSS
+│   ├── images/               # Content images directory
+│   └── logos/                # Project and sponsor logos
+│       ├── project-logo.png  # ⚠️  ADD: Navigation logo (~200x40px)
+│       ├── project-icon.png  # ⚠️  ADD: Favicon (32x32px)
+│       ├── lbnl-logo.png
+│       └── doe-logo.png
+├── pages/
+│   ├── about.md             # About page
+│   └── contact.md           # Contact page
+└── .gitignore               # Git ignore rules
+```
+
+**⚠️ Important**: Add your project logos before starting development!
+
 ## After Setup
 
 ### 1. Install Dependencies
@@ -113,30 +200,6 @@ git push origin main
 ```
 
 Then in GitHub: Settings → Pages → Source → Deploy from branch → Choose branch and folder
-
-## File Structure After Setup
-
-```
-your-project/
-├── _config.yml              # Site configuration
-├── Gemfile                   # Ruby dependencies  
-├── index.md                  # Home page
-├── _layouts/
-│   └── default.html          # Main layout
-├── _includes/
-│   └── navbar.html           # Navigation
-├── _data/
-│   └── sponsors.yaml         # Sponsor config
-├── assets/
-│   ├── css/
-│   │   └── main.scss         # LBNL styles
-│   ├── images/               # Content images
-│   └── logos/                # Project/sponsor logos
-├── pages/
-│   ├── about.md             # About page
-│   └── contact.md           # Contact page
-└── .gitignore               # Git ignore rules
-```
 
 ## Use Cases
 

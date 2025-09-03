@@ -1,7 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="{{ '/' | relative_url }}">
-            <img src="{{ '/assets/logos/project-logo.png' | relative_url }}" alt="{{ site.title }}" height="40" class="me-2">
+            {% assign logo_png_exists = false %}
+            {% assign logo_svg_exists = false %}
+            {% for static_file in site.static_files %}
+                {% if static_file.path == '/assets/logos/project-logo.png' %}
+                    {% assign logo_png_exists = true %}
+                {% elsif static_file.path == '/assets/logos/project-logo.svg' %}
+                    {% assign logo_svg_exists = true %}
+                {% endif %}
+            {% endfor %}
+            
+            {% if logo_svg_exists %}
+                <img src="{{ '/assets/logos/project-logo.svg' | relative_url }}" alt="{{ site.title }}" height="40" class="me-2">
+            {% elsif logo_png_exists %}
+                <img src="{{ '/assets/logos/project-logo.png' | relative_url }}" alt="{{ site.title }}" height="40" class="me-2">
+            {% endif %}
+            
             <span class="d-none d-sm-inline">{{ site.title }}</span>
         </a>
         

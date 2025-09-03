@@ -14,9 +14,10 @@ sponsors:
     url: "https://www.energy.gov/"
     
   # Add additional sponsors here
+  # Both PNG and SVG formats are supported
   # - order: 3
   #   name: "nsf"
-  #   logo: "nsf-logo.png"
+  #   logo: "nsf-logo.svg"
   #   alt: "National Science Foundation"
   #   url: "https://www.nsf.gov/"
   

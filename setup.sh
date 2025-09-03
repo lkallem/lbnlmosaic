@@ -71,6 +71,12 @@ process_templates
 # Create .gitignore
 create_gitignore
 
+# Check for required logos
+check_required_logos
+
+# Offer to create placeholders if needed
+offer_placeholder_logos
+
 # Cleanup: Remove template files if they exist
 cleanup_template_files
 
@@ -84,26 +90,31 @@ echo "   Accent Color: $ACCENT_COLOR_NAME"
 echo "   Base URL: ${SITE_BASEURL:-'(automatic)'}"
 echo "   Site URL: ${SITE_URL:-'(automatic)'}"
 echo ""
+
+# Check logos one more time for final reminder
+if [[ ! -f "assets/logos/project-logo.png" || ! -f "assets/logos/project-icon.png" ]]; then
+    echo "⚠️  Don't forget to add your logos before going live!"
+    echo ""
+fi
+
 echo "🔄 Next steps:"
-echo "1. Install dependencies:"
+echo "1. Add your project logos (if not done yet):"
+echo "   - assets/logos/project-logo.png (navigation, ~200x40px)"
+echo "   - assets/logos/project-icon.png (favicon, 32x32px)"
+echo ""
+echo "2. Install dependencies:"
 echo "   bundle install"
 echo ""
-echo "   📝 Note: Using github-pages gem for full GitHub Pages compatibility"
-echo "   If you get missing gem errors with Ruby 3.4+, they're already included"
-echo ""
-echo "2. Start development server:"
+echo "3. Start development server:"
 echo "   bundle exec jekyll serve --baseurl \"\""
 echo ""
-echo "3. View your site:"
+echo "4. View your site:"
 echo "   http://localhost:4000"
-echo ""
-echo "4. Your site will deploy exactly as it appears locally!"
 echo ""
 echo "5. Customize your content:"
 echo "   - Edit _config.yml for site details"
 echo "   - Update index.md for your home page"
 echo "   - Modify pages/about.md and pages/contact.md"
-echo "   - Add sponsor logos to assets/logos/"
 echo "   - Configure sponsors in _data/sponsors.yaml"
 
 # Show deployment instructions based on setup

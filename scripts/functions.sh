@@ -173,6 +173,134 @@ get_user_preferences() {
     fi
 }
 
+# Function to find logo file (PNG or SVG)
+find_logo_file() {
+    local base_name="$1"
+    local logo_dir="assets/logos"
+    
+    if [[ -f "$logo_dir/${base_name}.svg" ]]; then
+        echo "${base_name}.svg"
+    elif [[ -f "$logo_dir/${base_name}.png" ]]; then
+        echo "${base_name}.png"
+    else
+        echo ""
+    fi
+}
+
+# Function to check for required logos and warn if missing
+check_required_logos() {
+    echo "🖼️  Checking for required logos..."
+    
+    local missing_logos=()
+    local optional_logos=()
+    local found_logos=()
+    
+    # Check required logos (PNG or SVG)
+    local project_logo=$(find_logo_file "project-logo")
+    if [[ -z "$project_logo" ]]; then
+        missing_logos+=("project-logo.(png|svg)")
+    else
+        found_logos+=("$project_logo")
+    fi
+    
+    local project_icon=$(find_logo_file "project-icon")
+    if [[ -z "$project_icon" ]]; then
+        missing_logos+=("project-icon.(png|svg)")
+    else
+        found_logos+=("$project_icon")
+    fi
+    
+    # Check optional sponsor logos
+    local lbnl_logo=$(find_logo_file "lbnl-logo")
+    if [[ -z "$lbnl_logo" ]]; then
+        optional_logos+=("lbnl-logo.(png|svg)")
+    else
+        found_logos+=("$lbnl_logo")
+    fi
+    
+    local doe_logo=$(find_logo_file "doe-logo")
+    if [[ -z "$doe_logo" ]]; then
+        optional_logos+=("doe-logo.(png|svg)")
+    else
+        found_logos+=("$doe_logo")
+    fi
+    
+    # Report findings
+    if [[ ${#found_logos[@]} -gt 0 ]]; then
+        echo "   ✅ Found logos:"
+        for logo in "${found_logos[@]}"; do
+            echo "      - assets/logos/$logo"
+        done
+    fi
+    
+    if [[ ${#missing_logos[@]} -gt 0 ]]; then
+        echo "   ⚠️  Missing required logos:"
+        for logo in "${missing_logos[@]}"; do
+            echo "      - assets/logos/$logo"
+        done
+    fi
+    
+    if [[ ${#optional_logos[@]} -gt 0 ]]; then
+        echo "   ℹ️  Optional logos not found (footer sponsors will be empty):"
+        for logo in "${optional_logos[@]}"; do
+            echo "      - assets/logos/$logo"
+        done
+    fi
+    
+    # Show recommendations if any logos are missing
+    if [[ ${#missing_logos[@]} -gt 0 || ${#optional_logos[@]} -gt 0 ]]; then
+        echo ""
+        echo "📝 Logo Guidelines (PNG or SVG supported):"
+        echo "   • project-logo: Navigation bar logo (~200x40px)"
+        echo "   • project-icon: Browser favicon (32x32px or 64x64px)"
+        echo "   • lbnl-logo: Berkeley Lab logo for footer (optional)"
+        echo "   • doe-logo: Department of Energy logo for footer (optional)"
+        echo ""
+        echo "💡 SVG format recommended for crisp display at all sizes"
+        echo "💡 PNG with transparency also works well"
+    fi
+    
+    echo ""
+}
+
+# Function to create placeholder logos (optional)
+create_placeholder_logos() {
+    echo "🎨 Creating placeholder logo files..."
+    
+    # Create a simple SVG that can be converted to PNG
+    # This is a fallback - users should replace with real logos
+    
+    cat > assets/logos/project-logo.svg << 'EOF'
+<svg width="200" height="40" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="40" fill="#00313C"/>
+  <text x="100" y="25" fill="white" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold">PROJECT LOGO</text>
+</svg>
+EOF
+
+    cat > assets/logos/project-icon.svg << 'EOF'
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" fill="#00313C"/>
+  <text x="16" y="20" fill="white" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold">PL</text>
+</svg>
+EOF
+
+    echo "   ✓ Created placeholder SVG files"
+    echo "   ℹ️  Convert to PNG or replace with your actual logos"
+}
+
+# Function to offer to create placeholder logos
+offer_placeholder_logos() {
+    if [[ ! -f "assets/logos/project-logo.png" || ! -f "assets/logos/project-icon.png" ]]; then
+        echo "🤔 Would you like to create placeholder logo files?"
+        echo "   These are simple SVG placeholders you can replace later."
+        read -p "Create placeholders? (y/N): " create_placeholders
+        
+        if [[ $create_placeholders =~ ^[Yy]$ ]]; then
+            create_placeholder_logos
+        fi
+    fi
+}
+
 # Function to show configuration summary
 show_configuration_summary() {
     echo ""
