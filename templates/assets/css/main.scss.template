@@ -1,0 +1,337 @@
+---
+---
+
+// Import Bootswatch theme
+@import url('https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/{{BOOTSWATCH_THEME}}/bootstrap.min.css');
+
+// Official LBNL Color Scheme (2025)
+:root {
+  // Primary Palette
+  --lbnl-dark-blue: #00313C;
+  --lbnl-teal: #007681;
+  --lbnl-light-gray: #B1B3B3;
+  --lbnl-dark-gray: #63666A;
+  
+  // Secondary Palette
+  --lbnl-orange: #D57800;
+  --lbnl-green: #74AA50;
+  --lbnl-yellow: #EAAA00;
+  --lbnl-red: #E04E39;
+  --lbnl-dusty-rose: #E8927C;
+  --lbnl-olive-green: #AC9F3C;
+  --lbnl-blue: #4298B5;
+  --lbnl-purple: #5D4777;
+  --lbnl-burgundy: #672E45;
+  
+  // Project accent color
+  --lbnl-accent: var(--lbnl-{{ACCENT_COLOR}});
+  
+  // Neutral Colors
+  --lbnl-white: #ffffff;
+  --lbnl-black: #000000;
+}
+
+// Navbar styling
+.navbar {
+  background-color: var(--lbnl-white) !important;
+  border-bottom: 3px solid var(--lbnl-accent);
+  box-shadow: 0 2px 4px rgba(0, 49, 60, 0.1);
+}
+
+.navbar-brand {
+  color: var(--lbnl-dark-blue) !important;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+  color: var(--lbnl-dark-blue) !important;
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: var(--lbnl-accent) !important;
+}
+
+.navbar-nav .nav-link.active {
+  color: var(--lbnl-accent) !important;
+  font-weight: 600;
+}
+
+// Button styling
+.btn-primary {
+  background-color: var(--lbnl-dark-blue);
+  border-color: var(--lbnl-dark-blue);
+  color: var(--lbnl-white);
+  font-weight: 500;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--lbnl-teal);
+  border-color: var(--lbnl-teal);
+  color: var(--lbnl-white);
+}
+
+.btn-secondary {
+  background-color: var(--lbnl-accent);
+  border-color: var(--lbnl-accent);
+  color: var(--lbnl-white);
+  font-weight: 500;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: var(--lbnl-dark-blue);
+  border-color: var(--lbnl-dark-blue);
+  color: var(--lbnl-white);
+}
+
+.btn-outline-primary {
+  color: var(--lbnl-dark-blue);
+  border-color: var(--lbnl-dark-blue);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--lbnl-dark-blue);
+  border-color: var(--lbnl-dark-blue);
+  color: var(--lbnl-white);
+}
+
+.btn-outline-secondary {
+  color: var(--lbnl-accent);
+  border-color: var(--lbnl-accent);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--lbnl-accent);
+  border-color: var(--lbnl-accent);
+  color: var(--lbnl-white);
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  color: var(--lbnl-dark-blue);
+  font-weight: 600;
+}
+
+a {
+  color: var(--lbnl-teal);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--lbnl-dark-blue);
+  text-decoration: underline;
+}
+
+// LBNL components
+.lbnl-header {
+  background: linear-gradient(135deg, var(--lbnl-dark-blue), var(--lbnl-teal));
+  color: var(--lbnl-white);
+  padding: 3rem 0;
+}
+
+.lbnl-header h1 {
+  color: var(--lbnl-white);
+  font-weight: 300;
+  font-size: 3rem;
+}
+
+.lbnl-header .lead {
+  color: var(--lbnl-light-gray);
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
+
+.lbnl-accent {
+  border-left: 4px solid var(--lbnl-accent);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+}
+
+.lbnl-card {
+  border: 1px solid var(--lbnl-light-gray);
+  border-top: 4px solid var(--lbnl-accent);
+}
+
+.lbnl-badge {
+  background-color: var(--lbnl-accent);
+  color: var(--lbnl-white);
+  font-weight: 600;
+}
+
+.lbnl-badge-dark {
+  background-color: var(--lbnl-dark-blue);
+  color: var(--lbnl-white);
+  font-weight: 600;
+}
+
+// Logo styling
+.navbar-brand img {
+  max-height: 40px;
+  width: auto;
+}
+
+.sponsor-logos {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .sponsor-logos {
+    justify-content: flex-end;
+  }
+}
+
+.sponsor-logo {
+  height: 32px;
+  width: auto;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.sponsor-logo:hover {
+  opacity: 1;
+}
+
+.logo-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.logo-link:hover {
+  text-decoration: none;
+}
+
+// Alert variations
+.alert-lbnl-info {
+  background-color: rgba(0, 118, 129, 0.1);
+  border-color: var(--lbnl-teal);
+  color: var(--lbnl-dark-blue);
+  border-left: 4px solid var(--lbnl-teal);
+}
+
+.alert-lbnl-warning {
+  background-color: rgba(234, 170, 0, 0.1);
+  border-color: var(--lbnl-yellow);
+  color: var(--lbnl-dark-blue);
+  border-left: 4px solid var(--lbnl-yellow);
+}
+
+.alert-lbnl-success {
+  background-color: rgba(116, 170, 80, 0.1);
+  border-color: var(--lbnl-green);
+  color: var(--lbnl-dark-blue);
+  border-left: 4px solid var(--lbnl-green);
+}
+
+.alert-lbnl-accent {
+  background-color: rgba(213, 120, 0, 0.1);
+  border-color: var(--lbnl-accent);
+  color: var(--lbnl-dark-blue);
+  border-left: 4px solid var(--lbnl-accent);
+}
+
+// Footer styling
+footer {
+  background-color: var(--lbnl-dark-blue) !important;
+  color: var(--lbnl-white);
+  border-top: 3px solid var(--lbnl-accent);
+}
+
+footer p {
+  color: var(--lbnl-light-gray);
+  margin-bottom: 0;
+}
+
+footer a {
+  color: var(--lbnl-accent);
+}
+
+footer a:hover {
+  color: var(--lbnl-white);
+  text-decoration: underline;
+}
+
+// Dark mode adjustments
+[data-bs-theme="dark"] .sponsor-logo {
+  filter: brightness(0.9);
+}
+
+[data-bs-theme="dark"] .sponsor-logo:hover {
+  filter: brightness(1.1);
+}
+
+// Accessibility
+:focus {
+  outline: 2px solid var(--lbnl-accent);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--lbnl-accent);
+  color: var(--lbnl-white);
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .lbnl-header h1 {
+    font-size: 2rem;
+  }
+  
+  .lbnl-header {
+    padding: 2rem 0;
+  }
+  
+  .lbnl-accent {
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand span {
+    font-size: 0.9rem;
+  }
+  
+  .navbar-brand img {
+    max-height: 32px;
+  }
+}
+
+// Print styles
+@media print {
+  .navbar, footer {
+    display: none;
+  }
+  
+  body {
+    color: var(--lbnl-black);
+  }
+  
+  a {
+    color: var(--lbnl-black);
+    text-decoration: underline;
+  }
+  
+  .lbnl-header {
+    background: none !important;
+    color: var(--lbnl-black) !important;
+  }
+}

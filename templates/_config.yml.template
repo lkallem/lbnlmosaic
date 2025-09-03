@@ -1,0 +1,32 @@
+title: {{SITE_TITLE}}
+description: {{SITE_DESCRIPTION}}
+baseurl: "{{SITE_BASEURL}}"
+url: "{{SITE_URL}}"
+
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# GitHub Pages supported plugins (automatically enabled with github-pages gem)
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+include: ['pages']
+
+defaults:
+  - scope:
+      path: "pages"
+      type: "pages"
+    values:
+      layout: "default"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .gitignore
+  - vendor/
+  - node_modules/
+  

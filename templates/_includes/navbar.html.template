@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="{{ '/' | relative_url }}">
+            <img src="{{ '/assets/logos/project-logo.png' | relative_url }}" alt="{{ site.title }}" height="40" class="me-2">
+            <span class="d-none d-sm-inline">{{ site.title }}</span>
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto me-3">
+                <li class="nav-item">
+                    <a class="nav-link{% if page.url == '/' %} active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+                </li>
+                {% assign navbar_pages = site.pages | where: "navbar", true | sort: "order" %}
+                {% for nav_page in navbar_pages %}
+                    <li class="nav-item">
+                        <a class="nav-link{% if page.url == nav_page.url %} active{% endif %}" href="{{ nav_page.url | relative_url }}">{{ nav_page.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            
+            <button class="btn btn-outline-secondary" id="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-sun" id="theme-icon"></i>
+            </button>
+        </div>
+    </div>
+</nav>
