@@ -840,6 +840,10 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Installer Script
+setup-lbnl-jekyll.sh
+
 EOF
 
 echo ""
