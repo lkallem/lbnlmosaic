@@ -809,6 +809,39 @@ This site is configured for GitHub Pages deployment from the \`gh-pages\` branch
 This site follows the [LBNL Visual Identity Guidelines](https://creative.lbl.gov/visual-identity/).
 EOF
 
+# Create .gitignore
+echo "🚫 Creating .gitignore..."
+cat > .gitignore << 'EOF'
+# Jekyll build files
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler
+vendor/
+Gemfile.lock
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Logs
+*.log
+EOF
+
 echo ""
 echo "✅ LBNL Jekyll site setup complete!"
 echo "🎨 Using $accent_color_name as the accent color"
