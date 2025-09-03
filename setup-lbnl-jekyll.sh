@@ -973,66 +973,263 @@ A: We have access to Berkeley Lab's high-performance computing facilities, inclu
 A: We offer various programs for students at different levels. Please contact us with your CV and research interests for more information about available opportunities.
 EOF
 
-# Create README with color information
+# Create README with project information
 echo "📖 Creating README..."
 cat > README.md << EOF
-# BXE Project Website
+# LBNL Research Project Website
 
-A Jekyll-based website for the BXE project, built with Bootstrap and following LBNL's visual identity guidelines.
+A Jekyll-based website for Berkeley Lab research projects, built with Bootstrap and following LBNL's visual identity guidelines.
+
+## Features
+
+- **LBNL Brand Compliant**: Follows official [LBNL Visual Identity Guidelines](https://creative.lbl.gov/visual-identity/)
+- **Responsive Design**: Mobile-first Bootstrap framework
+- **Dark Mode Support**: Automatic system preference detection with manual toggle
+- **Customizable Themes**: Built on Bootswatch themes for easy styling
+- **Sponsor Integration**: Dynamic sponsor logo display from YAML configuration
+- **Accessibility**: WCAG compliant with proper ARIA labels and keyboard navigation
 
 ## Color Scheme
 
 This site uses the official LBNL color palette with **$accent_color_name** as the accent color:
+
+### Primary Palette
 - **Dark Blue (#00313C)** - Primary brand color
-- **$accent_color_name** - Selected accent color
 - **Teal (#007681)** - Links and interactions
 - **Light Gray (#B1B3B3)** and **Dark Gray (#63666A)** - Supporting colors
 
-## Setup
+### Secondary Palette (Accent: $accent_color_name)
+- Orange (#D57800), Green (#74AA50), Yellow (#EAAA00)
+- Red (#E04E39), Dusty Rose (#E8927C), Olive Green (#AC9F3C)
+- Blue (#4298B5), Purple (#5D4777), Burgundy (#672E45)
 
-1. Install dependencies:
+### Theme
+- **Base Theme**: $bootswatch_theme
+- **View all themes**: https://bootswatch.com/
+
+## Quick Start
+
+### Prerequisites
+- Ruby 2.7+ 
+- Bundler gem
+- Git
+
+### Local Development
+
+1. **Clone and setup**:
    \`\`\`bash
+   git clone <your-repository-url>
+   cd <your-repository-name>
    bundle install
    \`\`\`
 
-2. Run locally:
+2. **Run locally**:
    \`\`\`bash
-   bundle exec jekyll serve
+   bundle exec jekyll serve --baseurl ""
    \`\`\`
 
-3. Visit \`http://localhost:4000\` to view the site.
+3. **View site**: Open http://localhost:4000
 
-## Adding Pages
+### GitHub Pages Deployment
 
-To add new pages to the navigation:
+1. **Configure repository**:
+   - Go to Settings → Pages
+   - Set source to "Deploy from a branch"
+   - Select your main branch
+   - Choose "/ (root)" folder
 
-1. Create a new Markdown file in the \`pages/\` directory
-2. Add the following frontmatter:
+2. **Update configuration** (if needed):
+   - Edit \`baseurl\` in \`_config.yml\` to match your repository name
+   - Update \`url\` to match your GitHub Pages URL
+
+3. **Deploy**:
+   \`\`\`bash
+   git add .
+   git commit -m "Deploy to GitHub Pages"
+   git push origin main
+   \`\`\`
+
+## Customization
+
+### Adding Pages
+
+1. Create a new Markdown file in the \`pages/\` directory:
    \`\`\`yaml
    ---
    layout: default
    title: Page Title
    navbar: true
    order: 3
+   permalink: /page-name/
    ---
+   
+   # Your content here
    \`\`\`
-3. The page will automatically appear in the navigation bar
 
-## Customizing Colors
+2. The page will automatically appear in the navigation bar
 
-The accent color is defined as \`--lbnl-accent\` in the CSS variables. To change it:
+### Managing Sponsor Logos
 
-1. Edit \`assets/css/main.scss\`
-2. Update the \`--lbnl-accent\` variable to point to your desired color
-3. Available LBNL secondary colors: orange, green, yellow, red, dusty-rose, olive-green, blue, purple, burgundy
+1. **Add logos**: Place PNG files in \`assets/logos/\`
 
-## Deployment
+2. **Configure sponsors**: Edit \`_data/sponsors.yaml\`:
+   \`\`\`yaml
+   sponsors:
+     - order: 3
+       name: "sponsor-name"
+       logo: "sponsor-logo.png"
+       alt: "Sponsor Full Name"
+       url: "https://sponsor-website.com/"
+   \`\`\`
 
-This site is configured for GitHub Pages deployment from the \`gh-pages\` branch.
+3. Logos display in reverse order (higher numbers on the left)
 
-## LBNL Brand Compliance
+### Changing Colors
 
-This site follows the [LBNL Visual Identity Guidelines](https://creative.lbl.gov/visual-identity/).
+To change the accent color, edit \`assets/css/main.scss\`:
+\`\`\`scss
+// Change this line:
+--lbnl-accent: var(--lbnl-orange);
+// To any other LBNL secondary color:
+--lbnl-accent: var(--lbnl-green);
+\`\`\`
+
+Available colors: \`orange\`, \`green\`, \`yellow\`, \`red\`, \`dusty-rose\`, \`olive-green\`, \`blue\`, \`purple\`, \`burgundy\`
+
+### Changing Themes
+
+To switch Bootswatch themes, edit the import in \`assets/css/main.scss\`:
+\`\`\`scss
+@import url('https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/THEME-NAME/bootstrap.min.css');
+\`\`\`
+
+Popular themes: \`flatly\`, \`spacelab\`, \`cosmo\`, \`litera\`, \`materia\`, \`sandstone\`
+
+## Project Structure
+
+\`\`\`
+├── _config.yml              # Site configuration
+├── _data/
+│   └── sponsors.yaml        # Sponsor information
+├── _includes/
+│   └── navbar.html          # Navigation component
+├── _layouts/
+│   └── default.html         # Main page layout
+├── assets/
+│   ├── css/
+│   │   └── main.scss        # Custom styles
+│   ├── images/              # Content images
+│   └── logos/               # Project and sponsor logos
+├── pages/
+│   ├── about.md            # About page
+│   └── contact.md          # Contact page
+├── index.md                # Home page
+└── README.md               # This file
+\`\`\`
+
+## Content Guidelines
+
+### Images
+Place images in \`assets/images/\` and reference them:
+\`\`\`markdown
+![Alt text]({{ '/assets/images/my-image.png' | relative_url }})
+\`\`\`
+
+### LBNL Components
+Use custom LBNL-styled components:
+
+\`\`\`html
+<!-- Accent border -->
+<div class="lbnl-accent">
+  <h2>Section Title</h2>
+  <p>Content with accent border</p>
+</div>
+
+<!-- LBNL card -->
+<div class="lbnl-card card">
+  <div class="card-body">
+    <h3>Card Title</h3>
+    <p>Card content</p>
+  </div>
+</div>
+
+<!-- LBNL alerts -->
+<div class="alert alert-lbnl-info">Information alert</div>
+<div class="alert alert-lbnl-success">Success alert</div>
+<div class="alert alert-lbnl-warning">Warning alert</div>
+<div class="alert alert-lbnl-accent">Accent alert</div>
+
+<!-- LBNL badges -->
+<span class="lbnl-badge badge">Primary Badge</span>
+<span class="lbnl-badge-dark badge">Dark Badge</span>
+\`\`\`
+
+## Accessibility Features
+
+- **Keyboard Navigation**: Full keyboard support for all interactive elements
+- **Screen Reader Support**: Proper ARIA labels and semantic HTML
+- **Color Contrast**: WCAG AA compliant color combinations
+- **Skip Links**: Allow users to skip to main content
+- **Dark Mode**: Reduces eye strain and improves readability
+
+## Browser Support
+
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch: \`git checkout -b feature-name\`
+3. Make your changes and test locally
+4. Commit changes: \`git commit -m "Description of changes"\`
+5. Push to branch: \`git push origin feature-name\`
+6. Submit a pull request
+
+## Troubleshooting
+
+### Common Issues
+
+**Site doesn't load locally**:
+\`\`\`bash
+# Try specifying an empty baseurl
+bundle exec jekyll serve --baseurl ""
+\`\`\`
+
+**Images/CSS not loading on GitHub Pages**:
+- Check that \`baseurl\` in \`_config.yml\` matches your repository name
+- Ensure you're using \`relative_url\` filter for all asset paths
+
+**Build failures on GitHub Pages**:
+- Check the Actions tab in your repository for error details
+- Verify all file paths are correct and case-sensitive
+- Ensure YAML front matter is properly formatted
+
+### Getting Help
+
+- **Jekyll Documentation**: https://jekyllrb.com/docs/
+- **Bootstrap Documentation**: https://getbootstrap.com/docs/5.3/
+- **Bootswatch Themes**: https://bootswatch.com/
+- **LBNL Visual Identity**: https://creative.lbl.gov/visual-identity/
+
+## License
+
+This project template is released under the MIT License. See LICENSE file for details.
+
+Individual research projects may have different licensing requirements.
+
+## Acknowledgments
+
+- Lawrence Berkeley National Laboratory for visual identity guidelines
+- Bootstrap team for the responsive framework
+- Bootswatch for theme variations
+- Jekyll community for the static site generator
+
+---
+
+Built with ❤️ at Lawrence Berkeley National Laboratory
 EOF
 
 # Create .gitignore
