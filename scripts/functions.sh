@@ -146,6 +146,13 @@ get_user_preferences() {
             if [[ ! $use_detected =~ ^[Nn]$ ]]; then
                 GITHUB_USERNAME="$DETECTED_USERNAME"
                 GITHUB_REPO="$DETECTED_REPO"
+                # Auto-fill baseurl and url when Git repo is detected and accepted
+                SITE_URL="https://${GITHUB_USERNAME}.github.io"
+                SITE_BASEURL="/$GITHUB_REPO"
+                echo "✅ Auto-configured URLs:"
+                echo "   Site URL: $SITE_URL"
+                echo "   Base URL: $SITE_BASEURL"
+                echo ""
             fi
         fi
     fi
@@ -158,10 +165,15 @@ get_user_preferences() {
         read -p "Repository name: " GITHUB_REPO
     fi
     
-    read -p "Custom base URL (e.g., /my-repo, leave blank for auto): " SITE_BASEURL
-    read -p "Full site URL (e.g., https://user.github.io, leave blank for auto): " SITE_URL
+    # Only prompt for URLs if they weren't auto-configured from Git detection
+    if [[ -z "$SITE_URL" ]]; then
+        read -p "Full site URL (e.g., https://user.github.io, leave blank for auto): " SITE_URL
+    fi
+    if [[ -z "$SITE_BASEURL" ]]; then
+        read -p "Custom base URL (e.g., /my-repo, leave blank for auto): " SITE_BASEURL
+    fi
     
-    # Auto-detect GitHub URLs if username and repo provided
+    # Auto-detect GitHub URLs if username and repo provided but URLs still empty
     if [[ -n "$GITHUB_USERNAME" && -n "$GITHUB_REPO" ]]; then
         if [[ -z "$SITE_URL" ]]; then
             SITE_URL="https://${GITHUB_USERNAME}.github.io"
@@ -363,24 +375,25 @@ process_template() {
         return 1
     fi
     
-    # Escape special characters for sed
-    local safe_title=$(printf '%s\n' "$SITE_TITLE" | sed 's/[[\.*^$()+?{|]/\\&/g')
-    local safe_description=$(printf '%s\n' "$SITE_DESCRIPTION" | sed 's/[[\.*^$()+?{|]/\\&/g')
-    local safe_baseurl=$(printf '%s\n' "$SITE_BASEURL" | sed 's/[[\.*^$()+?{|]/\\&/g')
-    local safe_url=$(printf '%s\n' "$SITE_URL" | sed 's/[[\.*^$()+?{|]/\\&/g')
-    local safe_github_username=$(printf '%s\n' "$GITHUB_USERNAME" | sed 's/[[\.*^$()+?{|]/\\&/g')
-    local safe_github_repo=$(printf '%s\n' "$GITHUB_REPO" | sed 's/[[\.*^$()+?{|]/\\&/g')
+    # Use a safer delimiter for sed that's unlikely to appear in URLs
+    # We'll use the pipe character | as delimiter and escape any pipes in the content
+    local safe_title=$(printf '%s\n' "$SITE_TITLE" | sed 's/|/\\|/g')
+    local safe_description=$(printf '%s\n' "$SITE_DESCRIPTION" | sed 's/|/\\|/g')
+    local safe_baseurl=$(printf '%s\n' "$SITE_BASEURL" | sed 's/|/\\|/g')
+    local safe_url=$(printf '%s\n' "$SITE_URL" | sed 's/|/\\|/g')
+    local safe_github_username=$(printf '%s\n' "$GITHUB_USERNAME" | sed 's/|/\\|/g')
+    local safe_github_repo=$(printf '%s\n' "$GITHUB_REPO" | sed 's/|/\\|/g')
     
-    # Replace template variables
-    sed -e "s/{{SITE_TITLE}}/$safe_title/g" \
-        -e "s/{{SITE_DESCRIPTION}}/$safe_description/g" \
-        -e "s/{{SITE_BASEURL}}/$safe_baseurl/g" \
-        -e "s/{{SITE_URL}}/$safe_url/g" \
-        -e "s/{{BOOTSWATCH_THEME}}/$BOOTSWATCH_THEME/g" \
-        -e "s/{{ACCENT_COLOR}}/$ACCENT_COLOR/g" \
-        -e "s/{{ACCENT_COLOR_NAME}}/$ACCENT_COLOR_NAME/g" \
-        -e "s/{{GITHUB_USERNAME}}/$safe_github_username/g" \
-        -e "s/{{GITHUB_REPO}}/$safe_github_repo/g" \
+    # Replace template variables using | as delimiter
+    sed -e "s|{{SITE_TITLE}}|$safe_title|g" \
+        -e "s|{{SITE_DESCRIPTION}}|$safe_description|g" \
+        -e "s|{{SITE_BASEURL}}|$safe_baseurl|g" \
+        -e "s|{{SITE_URL}}|$safe_url|g" \
+        -e "s|{{BOOTSWATCH_THEME}}|$BOOTSWATCH_THEME|g" \
+        -e "s|{{ACCENT_COLOR}}|$ACCENT_COLOR|g" \
+        -e "s|{{ACCENT_COLOR_NAME}}|$ACCENT_COLOR_NAME|g" \
+        -e "s|{{GITHUB_USERNAME}}|$safe_github_username|g" \
+        -e "s|{{GITHUB_REPO}}|$safe_github_repo|g" \
         "$template_file" > "$output_file"
     
     echo "   ✓ Created $output_file"
