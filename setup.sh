@@ -5,6 +5,23 @@
 
 set -e
 
+# Parse command line arguments
+AUTO_YES=false
+if [[ "$1" == "-y" ]]; then
+    AUTO_YES=true
+elif [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    echo "LBNL Jekyll Template Setup"
+    echo ""
+    echo "Usage: $0 [-y] [-h|--help]"
+    echo ""
+    echo "Options:"
+    echo "  -y          Use default settings (flatly theme, orange accent,"
+    echo "              create placeholder logos, keep templates directory)"
+    echo "  -h, --help  Show this help message"
+    echo ""
+    exit 0
+fi
+
 # Get script directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -25,10 +42,14 @@ source "$SCRIPT_DIR/scripts/functions.sh"
 # Check if directory already has Jekyll files
 if [[ -f "_config.yml" || -f "index.md" || -f "Gemfile" ]]; then
     echo "⚠️  This directory appears to already have Jekyll files."
-    read -p "Continue anyway? This will overwrite existing files. (y/N): " confirm
-    if [[ ! $confirm =~ ^[Yy]$ ]]; then
-        echo "Setup cancelled."
-        exit 0
+    if [[ "$AUTO_YES" == "false" ]]; then
+        read -p "Continue anyway? This will overwrite existing files. (y/N): " confirm
+        if [[ ! $confirm =~ ^[Yy]$ ]]; then
+            echo "Setup cancelled."
+            exit 0
+        fi
+    else
+        echo "Auto-mode: Continuing with overwrite..."
     fi
     echo ""
 fi
@@ -47,16 +68,32 @@ if git rev-parse --show-toplevel > /dev/null 2>&1; then
 fi
 
 # Get user preferences
-get_user_preferences
-
-# Show configuration summary
-show_configuration_summary
-
-# Confirm before proceeding
-read -p "Proceed with setup? (Y/n): " proceed
-if [[ $proceed =~ ^[Nn]$ ]]; then
-    echo "Setup cancelled."
-    exit 0
+if [[ "$AUTO_YES" == "true" ]]; then
+    echo "🚀 Auto-mode: Using default settings..."
+    BOOTSWATCH_THEME="flatly"
+    ACCENT_COLOR=$(get_color_variables "1")
+    ACCENT_COLOR_NAME=$(get_color_name "1")
+    SITE_TITLE="My Research Project"
+    SITE_DESCRIPTION="A research project from Lawrence Berkeley National Laboratory"
+    SITE_BASEURL=""
+    SITE_URL=""
+    GITHUB_USERNAME=""
+    GITHUB_REPO=""
+    echo "   ✓ Theme: $BOOTSWATCH_THEME"
+    echo "   ✓ Accent Color: $ACCENT_COLOR_NAME"
+    echo "   ✓ Site Title: $SITE_TITLE"
+else
+    get_user_preferences
+    
+    # Show configuration summary
+    show_configuration_summary
+    
+    # Confirm before proceeding
+    read -p "Proceed with setup? (Y/n): " proceed
+    if [[ $proceed =~ ^[Nn]$ ]]; then
+        echo "Setup cancelled."
+        exit 0
+    fi
 fi
 
 echo ""
@@ -75,10 +112,19 @@ create_gitignore
 check_required_logos
 
 # Offer to create placeholders if needed
-offer_placeholder_logos
+if [[ "$AUTO_YES" == "true" ]]; then
+    echo "🖼️  Auto-mode: Creating placeholder logos..."
+    create_placeholder_logos
+else
+    offer_placeholder_logos
+fi
 
-# Cleanup: Remove template files if they exist
-cleanup_template_files
+# Cleanup: Remove template files if they exist (unless -y flag is used)
+if [[ "$AUTO_YES" == "false" ]]; then
+    cleanup_template_files
+else
+    echo "🔧 Auto-mode: Keeping templates directory for future use..."
+fi
 
 # Setup complete
 echo ""

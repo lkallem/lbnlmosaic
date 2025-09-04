@@ -238,6 +238,37 @@ Customize for workshops, conferences, or events.
 - Add custom JavaScript to `_includes/`
 - Modify the navbar in `_includes/navbar.html`
 
+## Mermaid Diagram Support
+
+The template includes built-in support for [Mermaid diagrams](https://mermaid.js.org/). Simply use fenced code blocks with the `mermaid` language:
+
+````markdown
+```mermaid
+flowchart TD
+    A[Research Question] --> B[Data Collection]
+    B --> C[Analysis]
+    C --> D[Publication]
+```
+````
+
+### Supported Diagram Types
+
+- **Flowcharts**: Process flows and decision trees
+- **Sequence Diagrams**: System interactions
+- **Class Diagrams**: Object-oriented designs
+- **Gantt Charts**: Project timelines
+- **Git Graphs**: Version control flows
+- **State Diagrams**: System states
+- **And more**: See [Mermaid documentation](https://mermaid.js.org/)
+
+### LBNL Theme Integration
+
+Mermaid diagrams automatically use LBNL colors and adapt to dark/light mode:
+
+- **Light Mode**: Uses LBNL primary colors with your chosen accent
+- **Dark Mode**: Automatically adjusts for better contrast
+- **Responsive**: Diagrams scale properly on mobile devices
+
 ## Requirements
 
 - Ruby 2.7+

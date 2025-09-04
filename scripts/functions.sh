@@ -342,6 +342,7 @@ process_templates() {
     process_template "$template_dir/assets/css/main.scss.template" "assets/css/main.scss"
     process_template "$template_dir/pages/about.md.template" "pages/about.md"
     process_template "$template_dir/pages/contact.md.template" "pages/contact.md"
+    process_template "$template_dir/pages/mermaid-demo.md.template" "pages/mermaid-demo.md"
 }
 
 # Function to process a single template file

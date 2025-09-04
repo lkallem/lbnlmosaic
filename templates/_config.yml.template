@@ -29,4 +29,5 @@ exclude:
   - .gitignore
   - vendor/
   - node_modules/
+  - templates/
   
