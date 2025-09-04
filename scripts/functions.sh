@@ -340,9 +340,17 @@ process_templates() {
     process_template "$template_dir/_includes/navbar.html.template" "_includes/navbar.html"
     process_template "$template_dir/_data/sponsors.yaml.template" "_data/sponsors.yaml"
     process_template "$template_dir/assets/css/main.scss.template" "assets/css/main.scss"
-    process_template "$template_dir/pages/about.md.template" "pages/about.md"
-    process_template "$template_dir/pages/contact.md.template" "pages/contact.md"
-    process_template "$template_dir/pages/mermaid-demo.md.template" "pages/mermaid-demo.md"
+    
+    # Process all page templates dynamically
+    if [[ -d "$template_dir/pages" ]]; then
+        for page_template in "$template_dir/pages"/*.template; do
+            if [[ -f "$page_template" ]]; then
+                # Extract filename without path and .template extension
+                local page_name=$(basename "$page_template" .template)
+                process_template "$page_template" "pages/$page_name"
+            fi
+        done
+    fi
 }
 
 # Function to process a single template file
