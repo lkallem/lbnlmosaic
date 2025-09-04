@@ -672,12 +672,23 @@ pre, code {
 
 // Dark mode links
 [data-bs-theme="dark"] a {
-  color: var(--lbnl-white);
+  color: var(--lbnl-teal);
 }
 
 [data-bs-theme="dark"] a:hover,
 [data-bs-theme="dark"] a:focus {
-  color: var(--bs-light);
+  color: var(--lbnl-accent);
+}
+
+// Specific styling for links inside lbnl-card in dark mode
+[data-bs-theme="dark"] .lbnl-card a {
+  color: var(--lbnl-teal);
+}
+
+[data-bs-theme="dark"] .lbnl-card a:hover,
+[data-bs-theme="dark"] .lbnl-card a:focus {
+  color: var(--lbnl-accent);
+  text-decoration: underline;
 }
 
 // Dark mode accent borders and elements
