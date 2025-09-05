@@ -22,7 +22,7 @@ permalink: /research/projects/
 ### Project Alpha: Advanced Scientific Computing
 
 <div class="project-card border rounded p-4 mb-4">
-    <h4 class="text-primary">Project Alpha</h4>
+    <h4 class="text-accent">Project Alpha</h4>
     <p class="text-muted"><strong>Duration:</strong> 2023 - 2026 | <strong>Funding:</strong> DOE Office of Science</p>
     
     <p><em>Replace with actual project description explaining the objectives, methodology, and expected outcomes of this research project.</em></p>
@@ -43,7 +43,7 @@ permalink: /research/projects/
     </div>
     
     <p>
-        <a href="#" class="btn btn-outline-primary btn-sm">Project Details</a>
+        <a href="#" class="btn btn-outline-secondary btn-sm">Project Details</a>
         <a href="#" class="btn btn-outline-secondary btn-sm">GitHub</a>
     </p>
 </div>
@@ -51,7 +51,7 @@ permalink: /research/projects/
 ### Project Beta: Climate Data Analysis
 
 <div class="project-card border rounded p-4 mb-4">
-    <h4 class="text-primary">Project Beta</h4>
+    <h4 class="text-accent">Project Beta</h4>
     <p class="text-muted"><strong>Duration:</strong> 2024 - 2027 | <strong>Funding:</strong> NSF</p>
     
     <p><em>Replace with actual project description explaining the objectives, methodology, and expected outcomes of this research project.</em></p>
@@ -72,7 +72,7 @@ permalink: /research/projects/
     </div>
     
     <p>
-        <a href="#" class="btn btn-outline-primary btn-sm">Project Details</a>
+        <a href="#" class="btn btn-outline-secondary btn-sm">Project Details</a>
         <a href="#" class="btn btn-outline-secondary btn-sm">Documentation</a>
     </p>
 </div>
@@ -102,6 +102,6 @@ permalink: /research/projects/
 
 ## Collaboration Opportunities
 
-<div class="alert alert-lbnl-success" role="alert">
+<div class="alert alert-success" role="alert">
     <strong>Open for Collaboration:</strong> <em>We welcome collaborations on these projects. Contact us if you're interested in contributing or have complementary research expertise.</em>
 </div>

@@ -101,6 +101,31 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Legal/Funding Acknowledgment Accordion -->
+            {% if site.funding_acknowledgment and site.funding_acknowledgment != '' %}
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="accordion" id="legalAccordion">
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header" id="legalHeading">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#legalCollapse" aria-expanded="false" aria-controls="legalCollapse">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    Funding & Legal Information
+                                </button>
+                            </h2>
+                            <div id="legalCollapse" class="accordion-collapse collapse" aria-labelledby="legalHeading" data-bs-parent="#legalAccordion">
+                                <div class="accordion-body">
+                                    <div class="small">
+                                        {{ site.funding_acknowledgment | markdownify }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </footer>
     

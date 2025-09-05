@@ -1,7 +1,7 @@
 ---
 ---
 
-// Import Bootswatch theme
+// Import Bootswatch theme (includes Bootstrap 5.3 with native dark mode)
 @import url('https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/{{BOOTSWATCH_THEME}}/bootstrap.min.css');
 
 // Official LBNL Color Scheme (2025)
@@ -25,168 +25,100 @@
   
   // Project accent color
   --lbnl-accent: var(--lbnl-{{ACCENT_COLOR}});
+}
+
+// Enhanced LBNL color integration with Bootstrap/Bootswatch
+:root {
+  // Map LBNL colors to Bootstrap semantic variables
+  --bs-primary: var(--lbnl-teal);           // Use LBNL teal as primary
+  --bs-secondary: var(--lbnl-accent);       // User-selected accent color
+  --bs-success: var(--lbnl-green);         // LBNL green for success states
+  --bs-info: var(--lbnl-blue);             // LBNL blue for info states
+  --bs-warning: var(--lbnl-yellow);        // LBNL yellow for warnings
+  --bs-danger: var(--lbnl-red);            // LBNL red for danger states
   
-  // Neutral Colors
-  --lbnl-white: #ffffff;
-  --lbnl-black: #000000;
+  // Additional Bootstrap color overrides
+  --bs-dark: var(--lbnl-dark-blue);        // LBNL dark blue instead of black
+  --bs-light: var(--lbnl-light-gray);      // LBNL light gray
+  
+  // Link colors that work with LBNL palette
+  --bs-link-color: var(--lbnl-teal);
+  --bs-link-hover-color: var(--lbnl-accent);
+  
+  // Border colors
+  --bs-border-color: var(--lbnl-light-gray);
 }
 
-// Navbar styling
-.navbar {
-  background-color: var(--lbnl-white) !important;
-  border-bottom: 3px solid var(--lbnl-accent);
-  box-shadow: 0 2px 4px rgba(0, 49, 60, 0.1);
-}
-
-.navbar-brand {
-  color: var(--lbnl-dark-blue) !important;
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-
-.navbar-nav .nav-link {
-  color: var(--lbnl-dark-blue) !important;
-  font-weight: 500;
-}
-
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link:focus {
-  color: var(--lbnl-accent) !important;
-}
-
-.navbar-nav .nav-link.active {
-  color: var(--lbnl-accent) !important;
-  font-weight: 600;
-}
-
-// Button styling
-.btn-primary {
-  background-color: var(--lbnl-dark-blue);
-  border-color: var(--lbnl-dark-blue);
-  color: var(--lbnl-white);
-  font-weight: 500;
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: var(--lbnl-teal);
-  border-color: var(--lbnl-teal);
-  color: var(--lbnl-white);
-}
-
-// Secondary buttons use selected accent color
-.btn-secondary {
-  background-color: var(--lbnl-accent);
-  border-color: var(--lbnl-accent);
-  color: var(--lbnl-white);
-  font-weight: 500;
-}
-
-.btn-secondary:hover,
-.btn-secondary:focus {
-  background-color: var(--lbnl-dark-blue);
-  border-color: var(--lbnl-dark-blue);
-  color: var(--lbnl-white);
-}
-
-// Outline buttons
-.btn-outline-primary {
-  color: var(--lbnl-dark-blue);
-  border-color: var(--lbnl-dark-blue);
-}
-
-.btn-outline-primary:hover {
-  background-color: var(--lbnl-dark-blue);
-  border-color: var(--lbnl-dark-blue);
-  color: var(--lbnl-white);
-}
-
-.btn-outline-secondary {
+// LBNL color utility classes
+.text-accent {
   color: var(--lbnl-accent);
-  border-color: var(--lbnl-accent);
 }
 
-.btn-outline-secondary:hover {
-  background-color: var(--lbnl-accent);
-  border-color: var(--lbnl-accent);
-  color: var(--lbnl-white);
-}
-
-// Typography
-h1, h2, h3, h4, h5, h6 {
-  color: var(--lbnl-dark-blue);
-  font-weight: 600;
-}
-
-// Links use Teal for better accessibility
-a {
+.text-lbnl-teal {
   color: var(--lbnl-teal);
-  text-decoration: none;
 }
 
-a:hover,
-a:focus {
+.text-lbnl-dark-blue {
   color: var(--lbnl-dark-blue);
-  text-decoration: underline;
 }
 
-// LBNL components
-.lbnl-header {
-  background: linear-gradient(135deg, var(--lbnl-dark-blue), var(--lbnl-teal));
-  color: var(--lbnl-white);
-  padding: 3rem 0;
+.bg-lbnl-teal {
+  background-color: var(--lbnl-teal);
+  color: white;
 }
 
-.lbnl-header h1 {
-  color: var(--lbnl-white);
-  font-weight: 300;
-  font-size: 3rem;
-}
-
-.lbnl-header .lead {
-  color: var(--lbnl-white);
-  font-size: 1.25rem;
-  opacity: 0.9;
-}
-
-.lbnl-accent {
-  border-left: 4px solid var(--lbnl-accent);
-  padding-left: 1.5rem;
-  margin: 2rem 0;
-}
-
-.lbnl-card {
-  border: 1px solid var(--lbnl-light-gray);
-  border-top: 4px solid var(--lbnl-accent);
-}
-
-.lbnl-badge {
-  background-color: var(--lbnl-accent);
-  color: var(--lbnl-white);
-  font-weight: 600;
-}
-
-.lbnl-badge-dark {
+.bg-lbnl-dark-blue {
   background-color: var(--lbnl-dark-blue);
-  color: var(--lbnl-white);
-  font-weight: 600;
+  color: white;
 }
 
-// Logo styling - Support both PNG and SVG
-.navbar-brand img {
-  max-height: 40px;
-  width: auto;
-  // Ensure SVGs scale properly
-  object-fit: contain;
+.bg-lbnl-accent {
+  background-color: var(--lbnl-accent);
+  color: white;
 }
 
-// Special handling for SVG logos in navbar
+.border-lbnl-accent {
+  border-color: var(--lbnl-accent) !important;
+}
+
+.border-lbnl-teal {
+  border-color: var(--lbnl-teal) !important;
+}
+
+// LBNL-specific navbar styling
+.navbar {
+  border-bottom: 3px solid var(--lbnl-accent);
+}
+
+// LBNL-specific footer styling
+footer {
+  border-top: 3px solid var(--lbnl-accent);
+}
+
+// Legal accordion in footer - minimal styling that works with both themes
+footer .accordion-button {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-size: 0.875rem;
+  padding: 0.5rem 0;
+}
+
+footer .accordion-item {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+// Logo styling - works with both PNG and SVG
+.navbar-brand img,
 .navbar-brand svg {
   max-height: 40px;
   width: auto;
+  object-fit: contain;
   vertical-align: middle;
 }
 
+// Sponsor logos
 .sponsor-logos {
   display: flex;
   align-items: center;
@@ -206,16 +138,15 @@ a:focus {
   width: auto;
   opacity: 0.8;
   transition: opacity 0.3s ease;
-  // Ensure both PNG and SVG scale properly
   object-fit: contain;
   vertical-align: middle;
 }
 
-.sponsor-logo:hover {
+.sponsor-logo:hover,
+.sponsor-logos svg:hover {
   opacity: 1;
 }
 
-// SVG specific styling for sponsor logos
 .sponsor-logos svg {
   height: 32px;
   width: auto;
@@ -223,532 +154,138 @@ a:focus {
   transition: opacity 0.3s ease;
 }
 
-.sponsor-logos svg:hover {
-  opacity: 1;
-}
-
 .logo-link {
   display: inline-block;
   text-decoration: none;
-  line-height: 0; // Prevents extra spacing around SVGs
+  line-height: 0;
 }
 
 .logo-link:hover {
   text-decoration: none;
 }
 
-// Favicon support for both PNG and SVG
-// This is handled in the HTML head section
-
-// Alert variations
-.alert-lbnl-info {
-  background-color: rgba(0, 118, 129, 0.1);
-  border-color: var(--lbnl-teal);
-  color: var(--lbnl-dark-blue);
-  border-left: 4px solid var(--lbnl-teal);
+// Optional: LBNL gradient enhancement for hero
+.bg-dark.lbnl-gradient {
+  background: linear-gradient(135deg, var(--lbnl-dark-blue), var(--lbnl-teal)) !important;
 }
 
-.alert-lbnl-warning {
-  background-color: rgba(234, 170, 0, 0.1);
-  border-color: var(--lbnl-yellow);
-  color: var(--lbnl-dark-blue);
-  border-left: 4px solid var(--lbnl-yellow);
-}
-
-.alert-lbnl-success {
-  background-color: rgba(116, 170, 80, 0.1);
-  border-color: var(--lbnl-green);
-  color: var(--lbnl-dark-blue);
-  border-left: 4px solid var(--lbnl-green);
-}
-
-.alert-lbnl-accent {
-  background-color: rgba(213, 120, 0, 0.1);
-  border-color: var(--lbnl-accent);
-  color: var(--lbnl-dark-blue);
+// LBNL accent components
+.lbnl-accent {
   border-left: 4px solid var(--lbnl-accent);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
 }
 
-// Footer styling
-footer {
-  background-color: var(--lbnl-dark-blue) !important;
-  color: var(--lbnl-white);
-  border-top: 3px solid var(--lbnl-accent);
+.lbnl-card {
+  border-top: 4px solid var(--lbnl-accent);
 }
 
-footer p {
-  color: var(--lbnl-light-gray);
-  margin-bottom: 0;
+.lbnl-badge {
+  background-color: var(--lbnl-accent);
+  color: white;
+  font-weight: 600;
 }
 
+.lbnl-badge-dark {
+  background-color: var(--lbnl-dark-blue);
+  color: white;
+  font-weight: 600;
+}
+
+// Let Bootswatch handle link colors - only override footer links for LBNL branding
 footer a {
   color: var(--lbnl-accent);
 }
 
-footer a:hover {
-  color: var(--lbnl-white);
+footer a:hover,
+footer a:focus {
+  color: white;
+}
+
+// Table of Contents styling - Kramdown generated
+#markdown-toc {
+  border: 1px solid var(--bs-border-color);
+  border-left: 4px solid var(--lbnl-accent);
+  border-radius: 0.375rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  list-style: none;
+}
+
+#markdown-toc::before {
+  content: "Table of Contents";
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+#markdown-toc li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+#markdown-toc li::before {
+  content: "●";
+  color: nav-link;
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  font-size: 0.8rem;
+}
+
+#markdown-toc li li::before {
+  content: "○";
+  color: var(--lbnl-teal);
+}
+
+#markdown-toc a {
+  text-decoration: none;
+  display: block;
+  padding: 0.25rem 0;
+}
+
+#markdown-toc a:hover,
+#markdown-toc a:focus {
   text-decoration: underline;
 }
 
-// Code blocks and syntax highlighting
-pre, code {
-  background-color: rgba(177, 179, 179, 0.1);
-  border: 1px solid var(--lbnl-light-gray);
-  color: var(--lbnl-dark-blue);
+#markdown-toc ul {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin-top: 0.25rem;
 }
 
-.highlight {
-  background-color: rgba(177, 179, 179, 0.05);
+// Mermaid diagram styling
+.mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: rgba(0, 49, 60, 0.02);
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.375rem;
+  overflow-x: auto;
 }
 
-// Tables
-.table-lbnl {
-  border-top: 2px solid var(--lbnl-accent);
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
 }
 
-.table-lbnl th {
-  background-color: var(--lbnl-dark-blue);
-  color: var(--lbnl-white);
-  border-color: var(--lbnl-teal);
+[data-bs-theme="dark"] .mermaid {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-.table-lbnl td {
-  border-color: var(--lbnl-light-gray);
-}
-
-.table-lbnl tbody tr:hover {
-  background-color: rgba(213, 120, 0, 0.05);
-}
-
-// Progress bars
-.progress-lbnl .progress-bar {
-  background-color: var(--lbnl-accent);
-}
-
-// Custom utility classes
-.text-lbnl-primary {
-  color: var(--lbnl-dark-blue) !important;
-}
-
-.text-lbnl-accent {
-  color: var(--lbnl-accent) !important;
-}
-
-.bg-lbnl-primary {
-  background-color: var(--lbnl-dark-blue) !important;
-  color: var(--lbnl-white);
-}
-
-.bg-lbnl-accent {
-  background-color: var(--lbnl-accent) !important;
-  color: var(--lbnl-white);
-}
-
-.border-lbnl-accent {
-  border-color: var(--lbnl-accent) !important;
-}
-
-// Dark mode logo adjustments
-[data-bs-theme="dark"] .sponsor-logo {
-  filter: brightness(0.9);
-}
-
-[data-bs-theme="dark"] .sponsor-logo:hover {
-  filter: brightness(1.1);
-}
-
-[data-bs-theme="dark"] .sponsor-logos svg {
-  filter: brightness(0.9);
-}
-
-[data-bs-theme="dark"] .sponsor-logos svg:hover {
-  filter: brightness(1.1);
-}
-
-// SVG dark mode support - invert colors if needed
-[data-bs-theme="dark"] .navbar-brand svg {
-  // Uncomment if you need to invert SVG colors in dark mode
-  // filter: invert(1);
-}
-
-// Dark mode variables
-[data-bs-theme="dark"] {
-  --lbnl-dark-blue: #4a90a4;
-  --lbnl-teal: #20c997;
-  --lbnl-light-gray: #6c757d;
-  --lbnl-dark-gray: #adb5bd;
-
-  // Keep accent color but adjust for dark mode
-  --lbnl-accent: var(--lbnl-$ {
-      accent_color
-    });
-
-  --lbnl-white: #212529;
-  --lbnl-black: #ffffff;
-}
-
-// Dark mode navbar
-[data-bs-theme="dark"] .navbar {
-  background-color: var(--bs-dark) !important;
-  border-bottom-color: var(--lbnl-accent);
-}
-
-[data-bs-theme="dark"] .navbar-brand,
-[data-bs-theme="dark"] .navbar-nav .nav-link {
-  color: var(--bs-light) !important;
-}
-
-[data-bs-theme="dark"] .navbar-nav .nav-link:hover,
-[data-bs-theme="dark"] .navbar-nav .nav-link:focus,
-[data-bs-theme="dark"] .navbar-nav .nav-link.active {
-  color: var(--lbnl-accent) !important;
-}
-
-// Dark mode dropdown menus
-[data-bs-theme="dark"] .dropdown-menu {
-  background-color: var(--bs-dark) !important;
-  border-color: var(--bs-secondary) !important;
-}
-
-[data-bs-theme="dark"] .dropdown-item {
-  color: var(--bs-light) !important;
-}
-
-[data-bs-theme="dark"] .dropdown-item:hover,
-[data-bs-theme="dark"] .dropdown-item:focus {
-  background-color: var(--bs-secondary) !important;
-  color: var(--bs-light) !important;
-}
-
-[data-bs-theme="dark"] .dropdown-item.active {
-  background-color: var(--lbnl-accent) !important;
-  color: var(--bs-white) !important;
-}
-
-[data-bs-theme="dark"] .dropdown-divider {
-  border-color: var(--bs-secondary) !important;
-}
-
-// Dark mode typography
-[data-bs-theme="dark"] h1,
-[data-bs-theme="dark"] h2,
-[data-bs-theme="dark"] h3,
-[data-bs-theme="dark"] h4,
-[data-bs-theme="dark"] h5,
-[data-bs-theme="dark"] h6 {
-  color: var(--bs-light) !important;
-}
-
-[data-bs-theme="dark"] .lbnl-header h1 {
-  color: var(--bs-white) !important;
-}
-
-// Dark mode cards
-[data-bs-theme="dark"] .lbnl-card,
-[data-bs-theme="dark"] .card {
-  background-color: var(--bs-dark);
-  border-color: var(--bs-secondary);
-  color: var(--bs-light);
-}
-
-[data-bs-theme="dark"] .card-title {
-  color: var(--bs-light) !important;
-}
-
-[data-bs-theme="dark"] .card-text {
-  color: var(--bs-light);
-}
-
-// Project cards dark mode
-[data-bs-theme="dark"] .project-card {
-  background-color: var(--bs-dark) !important;
-  border-color: var(--bs-secondary) !important;
-  color: var(--bs-light) !important;
-}
-
-[data-bs-theme="dark"] .project-card.bg-light {
-  background-color: rgba(108, 117, 125, 0.2) !important;
-  border-color: var(--bs-secondary) !important;
-}
-
-[data-bs-theme="dark"] .project-card h4,
-[data-bs-theme="dark"] .project-card h5 {
-  color: var(--bs-light) !important;
-}
-
-[data-bs-theme="dark"] .project-card .text-primary {
-  color: var(--bs-light) !important;
-}
-
-[data-bs-theme="dark"] .project-card .text-success {
-  color: var(--lbnl-green) !important;
-}
-
-// Project card buttons - keep brand colors for borders but light text
-[data-bs-theme="dark"] .project-card .btn-outline-primary {
-  color: var(--bs-light) !important;
-  border-color: var(--lbnl-teal) !important;
-}
-
-[data-bs-theme="dark"] .project-card .btn-outline-primary:hover {
-  background-color: var(--lbnl-teal) !important;
-  border-color: var(--lbnl-teal) !important;
-  color: var(--bs-white) !important;
-}
-
-[data-bs-theme="dark"] .project-card .btn-outline-secondary {
-  color: var(--bs-light) !important;
-  border-color: var(--lbnl-accent) !important;
-}
-
-[data-bs-theme="dark"] .project-card .btn-outline-secondary:hover {
-  background-color: var(--lbnl-accent) !important;
-  border-color: var(--lbnl-accent) !important;
-  color: var(--bs-white) !important;
-}
-
-[data-bs-theme="dark"] .project-card .btn-outline-success {
-  color: var(--bs-light) !important;
-  border-color: var(--lbnl-green) !important;
-}
-
-[data-bs-theme="dark"] .project-card .btn-outline-success:hover {
-  background-color: var(--lbnl-green) !important;
-  border-color: var(--lbnl-green) !important;
-  color: var(--bs-white) !important;
-}
-
-// Dark mode alerts
-[data-bs-theme="dark"] .alert-lbnl-info {
-  background-color: rgba(32, 201, 151, 0.15);
-  border-color: var(--lbnl-teal);
-  color: var(--bs-light);
-}
-
-[data-bs-theme="dark"] .alert-lbnl-warning {
-  background-color: rgba(234, 170, 0, 0.15);
-  border-color: var(--lbnl-yellow);
-  color: var(--bs-light);
-}
-
-[data-bs-theme="dark"] .alert-lbnl-success {
-  background-color: rgba(116, 170, 80, 0.15);
-  border-color: var(--lbnl-green);
-  color: var(--bs-light);
-}
-
-[data-bs-theme="dark"] .alert-lbnl-accent {
-  background-color: rgba(213, 120, 0, 0.15);
-  border-color: var(--lbnl-accent);
-  color: var(--bs-light);
-}
-
-[data-bs-theme="dark"] .alert-lbnl-danger {
-  background-color: rgba(224, 78, 57, 0.15);
-  border-color: var(--lbnl-red);
-  color: var(--bs-light);
-}
-
-// Dark mode buttons
-[data-bs-theme="dark"] .btn-outline-primary {
-  color: var(--lbnl-teal);
-  border-color: var(--lbnl-teal);
-}
-
-[data-bs-theme="dark"] .btn-outline-primary:hover {
-  background-color: var(--lbnl-teal);
-  border-color: var(--lbnl-teal);
-  color: var(--bs-white);
-}
-
-[data-bs-theme="dark"] .btn-outline-secondary {
-  color: var(--lbnl-accent);
-  border-color: var(--lbnl-accent);
-}
-
-[data-bs-theme="dark"] .btn-outline-secondary:hover {
-  background-color: var(--lbnl-accent);
-  border-color: var(--lbnl-accent);
-  color: var(--bs-white);
-}
-
-[data-bs-theme="dark"] .btn-outline-success {
-  color: var(--lbnl-green);
-  border-color: var(--lbnl-green);
-}
-
-[data-bs-theme="dark"] .btn-outline-success:hover {
-  background-color: var(--lbnl-green);
-  border-color: var(--lbnl-green);
-  color: var(--bs-white);
-}
-
-[data-bs-theme="dark"] .btn-outline-light {
-  color: var(--bs-light);
-  border-color: var(--bs-light);
-}
-
-[data-bs-theme="dark"] .btn-outline-light:hover {
-  background-color: var(--bs-light);
-  border-color: var(--bs-light);
-  color: var(--bs-dark);
-}
-
-// Dark mode badges
-[data-bs-theme="dark"] .lbnl-badge {
-  color: var(--bs-dark);
-}
-
-[data-bs-theme="dark"] .lbnl-badge-dark {
-  background-color: var(--bs-light);
-  color: var(--bs-dark);
-}
-
-// Bootstrap badge dark mode
-[data-bs-theme="dark"] .badge.bg-secondary {
-  background-color: var(--bs-secondary) !important;
-  color: var(--bs-light) !important;
-}
-
-[data-bs-theme="dark"] .badge.bg-success {
-  background-color: var(--lbnl-green) !important;
-  color: var(--bs-white) !important;
-}
-
-[data-bs-theme="dark"] .badge.bg-primary {
-  background-color: var(--lbnl-teal) !important;
-  color: var(--bs-white) !important;
-}
-
-// Dark mode code blocks
-[data-bs-theme="dark"] pre,
-[data-bs-theme="dark"] code {
-  background-color: var(--bs-dark);
-  border-color: var(--bs-secondary);
-  color: var(--bs-light);
-}
-
-[data-bs-theme="dark"] .highlight {
-  background-color: var(--bs-dark);
-}
-
-// Dark mode tables
-[data-bs-theme="dark"] .table-lbnl {
-  color: var(--bs-light);
-}
-
-[data-bs-theme="dark"] .table-lbnl th {
-  background-color: var(--bs-dark);
-  color: var(--bs-light);
-  border-color: var(--bs-secondary);
-}
-
-[data-bs-theme="dark"] .table-lbnl td {
-  border-color: var(--bs-secondary);
-  color: var(--bs-light);
-}
-
-[data-bs-theme="dark"] .table-lbnl tbody tr:hover {
-  background-color: var(--bs-dark);
-}
-
-// Dark mode footer
-[data-bs-theme="dark"] footer {
-  background-color: var(--bs-black) !important;
-  color: var(--bs-light);
-}
-
-[data-bs-theme="dark"] footer p {
-  color: var(--bs-light);
-}
-
-[data-bs-theme="dark"] footer a {
-  color: var(--lbnl-accent);
-}
-
-[data-bs-theme="dark"] footer a:hover {
-  color: var(--bs-white);
-}
-
-// Dark mode links
-[data-bs-theme="dark"] a {
-  color: var(--lbnl-teal);
-}
-
-[data-bs-theme="dark"] a:hover,
-[data-bs-theme="dark"] a:focus {
-  color: var(--lbnl-accent);
-}
-
-// Specific styling for links inside lbnl-card in dark mode
-[data-bs-theme="dark"] .lbnl-card a {
-  color: var(--lbnl-teal);
-}
-
-[data-bs-theme="dark"] .lbnl-card a:hover,
-[data-bs-theme="dark"] .lbnl-card a:focus {
-  color: var(--lbnl-accent);
-  text-decoration: underline;
-}
-
-// Dark mode accent borders and elements
-[data-bs-theme="dark"] .lbnl-accent {
-  border-left-color: var(--lbnl-accent);
-}
-
-[data-bs-theme="dark"] .border-lbnl-accent {
-  border-color: var(--lbnl-accent) !important;
-}
-
-// Dark mode navbar toggler
-[data-bs-theme="dark"] .navbar-toggler {
-  border-color: var(--bs-secondary);
-}
-
-[data-bs-theme="dark"] .navbar-toggler:focus {
-  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
-}
-
-// Dark mode form elements
-[data-bs-theme="dark"] .form-control,
-[data-bs-theme="dark"] .form-select {
-  background-color: var(--bs-dark);
-  border-color: var(--bs-secondary);
-  color: var(--bs-light);
-}
-
-[data-bs-theme="dark"] .form-control:focus,
-[data-bs-theme="dark"] .form-select:focus {
-  background-color: var(--bs-dark);
-  border-color: var(--lbnl-accent);
-  color: var(--bs-light);
-  box-shadow: 0 0 0 0.25rem rgba(var(--lbnl-accent), 0.25);
-}
-
-// Dark mode blockquotes
-[data-bs-theme="dark"] blockquote {
-  color: var(--bs-light);
-  border-left-color: var(--lbnl-accent);
-}
-
-// Smooth transitions for theme switching (disabled during page load)
-html:not(.no-transitions) * {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-// Accessibility improvements
-:focus {
-  outline: 2px solid var(--lbnl-accent);
-  outline-offset: 2px;
-}
-
-// Skip to content link for accessibility
+// Accessibility
 .skip-link {
   position: absolute;
   top: -40px;
   left: 6px;
   background: var(--lbnl-accent);
-  color: var(--lbnl-white);
+  color: white;
   padding: 8px;
   text-decoration: none;
   border-radius: 4px;
@@ -759,26 +296,24 @@ html:not(.no-transitions) * {
   top: 6px;
 }
 
+:focus {
+  outline: 2px solid var(--lbnl-accent);
+  outline-offset: 2px;
+}
+
+// Smooth transitions for theme switching (disabled during page load)
+html:not(.no-transitions) * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
 // Responsive adjustments
 @media (max-width: 768px) {
-  .lbnl-header h1 {
-    font-size: 2rem;
-  }
-  
-  .lbnl-header {
-    padding: 2rem 0;
-  }
-  
   .lbnl-accent {
     padding-left: 1rem;
   }
 }
-// Responsive navbar brand
+
 @media (max-width: 576px) {
-  .navbar-brand span {
-    font-size: 0.9rem;
-  }
-  
   .navbar-brand img,
   .navbar-brand svg {
     max-height: 32px;
@@ -796,147 +331,9 @@ html:not(.no-transitions) * {
     display: none;
   }
   
-  body {
-    color: var(--lbnl-black);
-  }
-  
-  a {
-    color: var(--lbnl-black);
-    text-decoration: underline;
-  }
-  
-  .lbnl-header {
+  .bg-dark,
+  .bg-dark.lbnl-gradient {
     background: none !important;
-    color: var(--lbnl-black) !important;
-  }
-}
-
-// Table of Contents styling - Kramdown generated
-#markdown-toc {
-  background-color: rgba(0, 49, 60, 0.02);
-  border: 1px solid var(--lbnl-light-gray);
-  border-left: 4px solid var(--lbnl-accent);
-  border-radius: 0.375rem;
-  padding: 1.5rem;
-  margin: 2rem 0;
-  list-style: none;
-}
-
-#markdown-toc::before {
-  content: "Table of Contents";
-  display: block;
-  color: var(--lbnl-dark-blue);
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-#markdown-toc li {
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
-  position: relative;
-  padding-left: 1.2rem;
-}
-
-#markdown-toc li::before {
-  content: "●";
-  color: var(--lbnl-accent);
-  position: absolute;
-  left: 0;
-  top: 0.25rem;
-  font-size: 0.8rem;
-}
-
-// Different bullet styles for nested levels
-#markdown-toc li li::before {
-  content: "○";
-  color: var(--lbnl-teal);
-}
-
-#markdown-toc li li li::before {
-  content: "▪";
-  color: var(--lbnl-accent);
-  font-size: 0.7rem;
-}
-
-#markdown-toc li li li li::before {
-  content: "▫";
-  color: var(--lbnl-teal);
-  font-size: 0.7rem;
-}
-
-#markdown-toc a {
-  color: var(--lbnl-teal);
-  text-decoration: none;
-  display: block;
-  padding: 0.25rem 0;
-  transition: color 0.3s ease;
-}
-
-#markdown-toc a:hover,
-#markdown-toc a:focus {
-  color: var(--lbnl-accent);
-  text-decoration: underline;
-}
-
-// Nested list styling for different heading levels
-#markdown-toc ul {
-  list-style: none;
-  padding-left: 1.5rem;
-  margin-top: 0.25rem;
-}
-
-// Dark mode TOC styling
-[data-bs-theme="dark"] #markdown-toc {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: var(--bs-secondary);
-  border-left-color: var(--lbnl-accent);
-}
-
-[data-bs-theme="dark"] #markdown-toc::before {
-  color: var(--bs-light);
-}
-
-[data-bs-theme="dark"] #markdown-toc a {
-  color: var(--lbnl-teal);
-}
-
-[data-bs-theme="dark"] #markdown-toc a:hover,
-[data-bs-theme="dark"] #markdown-toc a:focus {
-  color: var(--lbnl-accent);
-}
-
-// Mermaid diagram styling
-.mermaid {
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
-  padding: 1rem;
-  background-color: rgba(0, 49, 60, 0.02);
-  border: 1px solid var(--lbnl-light-gray);
-  border-radius: 0.375rem;
-  overflow-x: auto;
-}
-
-.mermaid svg {
-  max-width: 100%;
-  height: auto;
-}
-
-// Dark mode Mermaid adjustments
-[data-bs-theme="dark"] .mermaid {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: var(--bs-secondary);
-}
-
-// Responsive Mermaid diagrams
-@media (max-width: 768px) {
-  .mermaid {
-    margin: 1rem 0;
-    padding: 0.75rem;
-  }
-  
-  .mermaid svg {
-    min-width: 100%;
+    color: black !important;
   }
 }

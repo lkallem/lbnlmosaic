@@ -182,6 +182,7 @@ open http://localhost:4000
 - Modify `pages/about.md` and `pages/contact.md`
 - Add logos to `assets/logos/`
 - Configure sponsors in `_data/sponsors.yaml`
+- Add funding acknowledgment in `_config.yml` (see Legal/Funding Acknowledgment section below)
 
 ### 4. Deploy to GitHub Pages
 
@@ -214,6 +215,55 @@ Use as template repository for your lab's main website.
 
 ### Conference Website
 Customize for workshops, conferences, or events.
+
+## Legal/Funding Acknowledgment
+
+The template includes a collapsible accordion in the footer for displaying funding acknowledgments and legal disclaimers, which is commonly required for research projects.
+
+### Setup Integration
+
+The funding acknowledgment is **configured automatically during setup**:
+
+1. **During `./setup.sh`**: You'll be prompted to enter your funding acknowledgment text
+2. **Multi-line input**: Enter your text and press Enter twice when finished
+3. **Skip to disable**: Leave blank to hide the legal footer entirely
+4. **Auto-mode**: Use `./setup.sh -y` to skip (disables funding acknowledgment)
+
+### Manual Configuration
+
+After setup, you can modify the funding acknowledgment in `_config.yml`:
+
+```yaml
+# Legal/Funding Acknowledgment (appears in footer accordion)
+funding_acknowledgment: |
+  This work was supported by the U.S. Department of Energy, Office of Science, 
+  under Contract No. DE-AC02-05CH11231. Additional support was provided by 
+  [specific funding agencies or grants - customize this text for your project].
+  
+  **Disclaimer:** This document was prepared as an account of work sponsored by 
+  the United States Government. Neither the United States Government nor any 
+  agency thereof, nor any of their employees, makes any warranty, express or 
+  implied, or assumes any legal liability or responsibility for the accuracy, 
+  completeness, or usefulness of any information disclosed.
+```
+
+**To disable**: Comment out the entire `funding_acknowledgment:` section with `#`
+
+### Features
+
+- **Setup Integration**: Prompted during initial site setup
+- **Collapsible Design**: Users click "Funding & Legal Information" to expand the accordion
+- **Markdown Support**: Use formatting like `**bold**` and links in your acknowledgment text
+- **Easy to Modify**: Located in the main `_config.yml` file with clear documentation
+- **Optional**: Automatically disabled when left blank during setup
+- **Mobile Responsive**: Accordion works well on all device sizes
+
+### Common Use Cases
+
+- DOE/NSF/NIH funding acknowledgments
+- University/institutional disclaimers
+- Copyright and licensing information
+- Grant-specific acknowledgment requirements
 
 ## Customization
 

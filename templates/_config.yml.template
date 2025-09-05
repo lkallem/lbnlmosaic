@@ -3,6 +3,12 @@ description: {{SITE_DESCRIPTION}}
 baseurl: "{{SITE_BASEURL}}"
 url: "{{SITE_URL}}"
 
+# Legal/Funding Acknowledgment (appears in footer accordion)
+# This section is configured during setup. To modify or disable:
+# - Edit the text below, or comment out the entire funding_acknowledgment section to hide the accordion
+{{FUNDING_SECTION_START}}funding_acknowledgment: |
+  {{FUNDING_ACKNOWLEDGMENT}}{{FUNDING_SECTION_END}}
+
 markdown: kramdown
 highlighter: rouge
 permalink: pretty

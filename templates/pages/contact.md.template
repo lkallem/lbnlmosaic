@@ -61,6 +61,6 @@ United States
 
 <em>If you offer student positions, internships, or research opportunities, describe them here along with application procedures.</em>
 
-<div class="alert alert-lbnl-accent mt-4" role="alert">
+<div class="alert alert-warning mt-4" role="alert">
     <strong>Note:</strong> <em>Add any important notes about response times, preferred contact methods, or specific procedures for different types of inquiries.</em>
 </div>

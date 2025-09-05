@@ -27,7 +27,7 @@ permalink: /research/publications/
     <p><em>Journal Name</em>, Vol. XX, No. X, 2024</p>
     <p><strong>Abstract:</strong> <em>Replace with actual publication abstract describing the research findings and methodology.</em></p>
     <p>
-        <a href="#" class="btn btn-outline-primary btn-sm">View Paper</a>
+        <a href="#" class="btn btn-outline-secondary btn-sm">View Paper</a>
         <a href="#" class="btn btn-outline-secondary btn-sm">Preprint</a>
     </p>
 </div>
@@ -38,7 +38,7 @@ permalink: /research/publications/
     <p><em>Conference Proceedings</em>, 2024</p>
     <p><strong>Abstract:</strong> <em>Replace with actual publication abstract describing the research findings and methodology.</em></p>
     <p>
-        <a href="#" class="btn btn-outline-primary btn-sm">View Paper</a>
+        <a href="#" class="btn btn-outline-secondary btn-sm">View Paper</a>
         <a href="#" class="btn btn-outline-secondary btn-sm">Slides</a>
     </p>
 </div>
@@ -51,13 +51,13 @@ permalink: /research/publications/
     <p><em>Journal Name</em>, Vol. XX, No. X, 2023</p>
     <p><strong>Abstract:</strong> <em>Replace with actual publication abstract describing the research findings and methodology.</em></p>
     <p>
-        <a href="#" class="btn btn-outline-primary btn-sm">View Paper</a>
+        <a href="#" class="btn btn-outline-secondary btn-sm">View Paper</a>
     </p>
 </div>
 
 ## Preprints & Working Papers
 
-<div class="alert alert-lbnl-info" role="alert">
+<div class="alert alert-info" role="alert">
     <strong>Preprint Available:</strong> <em>Replace with information about any preprints or working papers currently available.</em>
 </div>
 

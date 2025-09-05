@@ -31,7 +31,7 @@ permalink: /about/
 
 <em>Discuss the real-world applications of your research and its potential impact on science, technology, or society.</em>
 
-<div class="alert alert-lbnl-success mt-4" role="alert">
+<div class="alert alert-success mt-4" role="alert">
     <strong>Collaboration Welcome:</strong> <em>If you're open to collaborations, describe what kind of partnerships you're seeking and how researchers can get involved.</em>
 </div>
 

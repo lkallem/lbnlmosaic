@@ -79,9 +79,11 @@ if [[ "$AUTO_YES" == "true" ]]; then
     SITE_URL=""
     GITHUB_USERNAME=""
     GITHUB_REPO=""
+    FUNDING_ACKNOWLEDGMENT=""
     echo "   ✓ Theme: $BOOTSWATCH_THEME"
     echo "   ✓ Accent Color: $ACCENT_COLOR_NAME"
     echo "   ✓ Site Title: $SITE_TITLE"
+    echo "   ✓ Funding Acknowledgment: (none - legal footer disabled)"
 else
     get_user_preferences
     
@@ -162,6 +164,11 @@ echo "   - Edit _config.yml for site details"
 echo "   - Update index.md for your home page"
 echo "   - Modify pages/about.md and pages/contact.md"
 echo "   - Configure sponsors in _data/sponsors.yaml"
+if [[ -n "$FUNDING_ACKNOWLEDGMENT" ]]; then
+    echo "   - Update funding_acknowledgment in _config.yml if needed"
+else
+    echo "   - Add funding_acknowledgment in _config.yml to enable legal footer"
+fi
 
 # Show deployment instructions based on setup
 show_deployment_instructions

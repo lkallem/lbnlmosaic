@@ -3,13 +3,17 @@ layout: default
 title: Home
 ---
 
-<div class="lbnl-header">
-    <div class="container">
-        <h1>{{SITE_TITLE}}</h1>
-        <p class="lead">{{SITE_DESCRIPTION}}</p>
-        <div class="mt-4">
-            <a href="#about" class="btn btn-secondary me-3">Learn More</a>
-            <a href="{{GITHUB_USERNAME}}/{{GITHUB_REPO}}" class="btn btn-outline-light">View on GitHub</a>
+<div class="bg-dark lbnl-gradient text-white py-5">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="display-5 fw-normal">{{SITE_TITLE}}</h1>
+                <p class="lead mb-4">{{SITE_DESCRIPTION}}</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <a href="#about" class="btn btn-secondary btn-lg">Learn More</a>
+                    <a href="https://github.com/{{GITHUB_USERNAME}}/{{GITHUB_REPO}}" class="btn btn-outline-secondary btn-lg">View on GitHub</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -43,7 +47,7 @@ title: Home
         </div>
     </section>
     
-    <div class="alert alert-lbnl-info mt-4" role="alert">
+    <div class="alert alert-info mt-4" role="alert">
         <strong>Getting Started:</strong> <em>Add instructions here for how users can get started with your project, access your data, or use your tools.</em>
     </div>
     
