@@ -237,7 +237,7 @@ After setup, you can modify the funding acknowledgment in `_config.yml`:
 # Legal/Funding Acknowledgment (appears in footer accordion)
 funding_acknowledgment: |
   This work was supported by the U.S. Department of Energy, Office of Science, 
-  under Contract No. DE-AC02-05CH11231. Additional support was provided by 
+  under Contract No. DE-XXXX-XXXXXXXXX. Additional support was provided by 
   [specific funding agencies or grants - customize this text for your project].
   
   **Disclaimer:** This document was prepared as an account of work sponsored by 
@@ -257,13 +257,6 @@ funding_acknowledgment: |
 - **Easy to Modify**: Located in the main `_config.yml` file with clear documentation
 - **Optional**: Automatically disabled when left blank during setup
 - **Mobile Responsive**: Accordion works well on all device sizes
-
-### Common Use Cases
-
-- DOE/NSF/NIH funding acknowledgments
-- University/institutional disclaimers
-- Copyright and licensing information
-- Grant-specific acknowledgment requirements
 
 ## Customization
 

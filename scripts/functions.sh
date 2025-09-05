@@ -12,7 +12,6 @@ SITE_TITLE=""
 SITE_DESCRIPTION=""
 GITHUB_USERNAME=""
 GITHUB_REPO=""
-FUNDING_ACKNOWLEDGMENT=""
 
 # Function to display Bootswatch theme options
 show_bootswatch_options() {
@@ -184,54 +183,6 @@ get_user_preferences() {
             SITE_BASEURL="/$GITHUB_REPO"
         fi
     fi
-    
-    echo ""
-    echo "⚖️ Legal/Funding Acknowledgment (optional):"
-    echo "For research projects, you may need to include funding acknowledgments"
-    echo "and legal disclaimers. This will appear in a collapsible footer section."
-    echo ""
-    echo "Example funding sources:"
-    echo "• U.S. Department of Energy (DOE)"
-    echo "• National Science Foundation (NSF)" 
-    echo "• National Institutes of Health (NIH)"
-    echo "• University or institutional grants"
-    echo ""
-    echo "Enter your funding acknowledgment text (press Enter twice when done):"
-    echo "Leave blank to disable the legal footer section."
-    echo ""
-    
-    # Multi-line input for funding acknowledgment
-    FUNDING_ACKNOWLEDGMENT=""
-    local line=""
-    local empty_lines=0
-    
-    while IFS= read -r line; do
-        if [[ -z "$line" ]]; then
-            ((empty_lines++))
-            if [[ $empty_lines -ge 2 ]]; then
-                break
-            fi
-            if [[ -n "$FUNDING_ACKNOWLEDGMENT" ]]; then
-                FUNDING_ACKNOWLEDGMENT="${FUNDING_ACKNOWLEDGMENT}${line}"$'\n'
-            fi
-        else
-            empty_lines=0
-            if [[ -n "$FUNDING_ACKNOWLEDGMENT" ]]; then
-                FUNDING_ACKNOWLEDGMENT="${FUNDING_ACKNOWLEDGMENT}${line}"$'\n'
-            else
-                FUNDING_ACKNOWLEDGMENT="${line}"$'\n'
-            fi
-        fi
-    done
-    
-    # Remove trailing newlines
-    FUNDING_ACKNOWLEDGMENT=$(echo "$FUNDING_ACKNOWLEDGMENT" | sed 's/[[:space:]]*$//')
-    
-    if [[ -n "$FUNDING_ACKNOWLEDGMENT" ]]; then
-        echo "✅ Funding acknowledgment added (${#FUNDING_ACKNOWLEDGMENT} characters)"
-    else
-        echo "ℹ️  No funding acknowledgment - legal footer will be hidden"
-    fi
 }
 
 # Function to find logo file (PNG or SVG)
@@ -376,11 +327,6 @@ show_configuration_summary() {
     if [[ -n "$GITHUB_USERNAME" && -n "$GITHUB_REPO" ]]; then
         echo "GitHub: ${GITHUB_USERNAME}/${GITHUB_REPO}"
     fi
-    if [[ -n "$FUNDING_ACKNOWLEDGMENT" ]]; then
-        echo "Funding Acknowledgment: ✅ Enabled (${#FUNDING_ACKNOWLEDGMENT} characters)"
-    else
-        echo "Funding Acknowledgment: ❌ Disabled (legal footer hidden)"
-    fi
     echo ""
 }
 
@@ -437,19 +383,6 @@ process_template() {
     local safe_url=$(printf '%s\n' "$SITE_URL" | sed 's/|/\\|/g')
     local safe_github_username=$(printf '%s\n' "$GITHUB_USERNAME" | sed 's/|/\\|/g')
     local safe_github_repo=$(printf '%s\n' "$GITHUB_REPO" | sed 's/|/\\|/g')
-    local safe_funding=$(printf '%s\n' "$FUNDING_ACKNOWLEDGMENT" | sed 's/|/\\|/g')
-    
-    # Set funding section markers based on whether we have content
-    local funding_start=""
-    local funding_end=""
-    
-    if [[ -z "$FUNDING_ACKNOWLEDGMENT" ]]; then
-        funding_start="# "
-        funding_end=""
-    else
-        funding_start=""
-        funding_end=""
-    fi
     
     # Replace template variables using | as delimiter
     sed -e "s|{{SITE_TITLE}}|$safe_title|g" \
@@ -461,9 +394,6 @@ process_template() {
         -e "s|{{ACCENT_COLOR_NAME}}|$ACCENT_COLOR_NAME|g" \
         -e "s|{{GITHUB_USERNAME}}|$safe_github_username|g" \
         -e "s|{{GITHUB_REPO}}|$safe_github_repo|g" \
-        -e "s|{{FUNDING_ACKNOWLEDGMENT}}|$safe_funding|g" \
-        -e "s|{{FUNDING_SECTION_START}}|$funding_start|g" \
-        -e "s|{{FUNDING_SECTION_END}}|$funding_end|g" \
         "$template_file" > "$output_file"
     
     echo "   ✓ Created $output_file"

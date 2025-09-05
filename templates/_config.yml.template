@@ -6,8 +6,16 @@ url: "{{SITE_URL}}"
 # Legal/Funding Acknowledgment (appears in footer accordion)
 # This section is configured during setup. To modify or disable:
 # - Edit the text below, or comment out the entire funding_acknowledgment section to hide the accordion
-{{FUNDING_SECTION_START}}funding_acknowledgment: |
-  {{FUNDING_ACKNOWLEDGMENT}}{{FUNDING_SECTION_END}}
+# funding_acknowledgment: |
+#   This work was supported by the U.S. Department of Energy, Office of Science, 
+#   under Contract No. DE-XXXX-XXXXXXXXX. Additional support was provided by 
+#   [specific funding agencies or grants - customize this text for your project].
+ 
+#   **Disclaimer:** This document was prepared as an account of work sponsored by 
+#   the United States Government. Neither the United States Government nor any 
+#   agency thereof, nor any of their employees, makes any warranty, express or 
+#   implied, or assumes any legal liability or responsibility for the accuracy, 
+#   completeness, or usefulness of any information disclosed.
 
 markdown: kramdown
 highlighter: rouge
