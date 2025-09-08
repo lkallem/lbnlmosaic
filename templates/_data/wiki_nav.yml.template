@@ -3,25 +3,25 @@ sections:
     icon: fas fa-rocket
     pages:
       - title: Documentation Home
-        url: /pages/docs/
+        url: /docs/
         icon: fas fa-home
       - title: Getting Started
-        url: /pages/docs/getting-started
+        url: /docs/getting-started
         icon: fas fa-play
         
   - title: User Guide
     icon: fas fa-book
     pages:
       - title: Writing Content
-        url: /pages/docs/writing-content
+        url: /docs/getting-started#content-guidelines
         icon: fas fa-edit
       - title: Best Practices
-        url: /pages/docs/best-practices
+        url: /docs/getting-started#best-practices
         icon: fas fa-star
         
   - title: Examples
     icon: fas fa-code
     pages:
       - title: Sample Documentation
-        url: /pages/docs/examples
+        url: /docs/getting-started#quick-start
         icon: fas fa-file-alt

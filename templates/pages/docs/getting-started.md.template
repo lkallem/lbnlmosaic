@@ -7,18 +7,18 @@ author: {{SITE_TITLE}} Team
 last_modified_at: 2024-01-01
 breadcrumbs:
   - title: Documentation
-    url: /pages/docs/
+    url: /docs/
   - title: Getting Started
-    url: /pages/docs/getting-started
+    url: /docs/getting-started
 prev_page:
   title: Documentation Home
-  url: /pages/docs/
+  url: /docs/
 next_page:
   title: Configuration
-  url: /pages/docs/configuration
+  url: /docs/configuration
 navbar: true
 parent: Documentation
-permalink: /pages/docs/getting-started
+permalink: /docs/getting-started
 order: 2
 ---
 
@@ -71,10 +71,10 @@ sections:
     icon: fas fa-rocket
     pages:
       - title: Introduction
-        url: /pages/docs/
+        url: /docs/
         icon: fas fa-home
       - title: Installation
-        url: /pages/docs/installation
+        url: /docs/installation
         icon: fas fa-download
 ```
 

@@ -5,7 +5,7 @@ description: Welcome to the {{SITE_TITLE}} documentation center
 category: Home
 navbar: true
 parent: Documentation
-permalink: /pages/docs/
+permalink: /docs/
 order: 1
 ---
 
@@ -25,7 +25,7 @@ Welcome to the comprehensive documentation for {{SITE_TITLE}}. This documentatio
         <p class="card-text">
           New to the project? Start here to learn the basics and get up and running quickly.
         </p>
-        <a href="/pages/docs/getting-started" class="btn btn-primary btn-sm">Get Started</a>
+        <a href="/docs/getting-started" class="btn btn-primary btn-sm">Get Started</a>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@ Welcome to the comprehensive documentation for {{SITE_TITLE}}. This documentatio
         <p class="card-text">
           Comprehensive guides for daily usage, content creation, and best practices.
         </p>
-        <a href="/pages/docs/user-guide" class="btn btn-info btn-sm">Learn More</a>
+        <a href="/docs/user-guide" class="btn btn-info btn-sm">Learn More</a>
       </div>
     </div>
   </div>

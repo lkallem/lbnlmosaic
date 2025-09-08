@@ -24,6 +24,11 @@ permalink: pretty
 # Kramdown configuration
 kramdown:
   toc_levels: 2..6  # Only include H2-H6 in table of contents
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
 
 # GitHub Pages supported plugins (automatically enabled with github-pages gem)
 plugins:
