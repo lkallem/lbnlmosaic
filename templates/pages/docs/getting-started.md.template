@@ -1,0 +1,127 @@
+---
+layout: wiki
+title: Getting Started
+description: Learn how to get started with this documentation system
+category: Guide
+author: {{SITE_TITLE}} Team
+last_modified_at: 2024-01-01
+breadcrumbs:
+  - title: Documentation
+    url: /pages/docs/
+  - title: Getting Started
+    url: /pages/docs/getting-started
+prev_page:
+  title: Documentation Home
+  url: /pages/docs/
+next_page:
+  title: Configuration
+  url: /pages/docs/configuration
+navbar: true
+parent: Documentation
+permalink: /pages/docs/getting-started
+order: 2
+---
+
+# Getting Started
+
+Welcome to the {{SITE_TITLE}} documentation! This guide will help you get started with our wiki-style documentation system.
+
+## Overview
+
+This documentation system is built with Jekyll and Bootstrap, providing a clean and professional way to organize your project documentation.
+
+### Key Features
+
+- **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
+- **Automatic Navigation**: Sidebar navigation with active state highlighting
+- **Table of Contents**: Auto-generated TOC for easy page navigation
+- **Bootstrap Components**: Uses native Bootstrap components for consistency
+- **LBNL Branding**: Integrated with LBNL visual identity guidelines
+
+## Quick Start
+
+### Creating New Wiki Pages
+
+1. Create a new Markdown file in the `pages/docs/` directory
+2. Add the required front matter:
+   ```yaml
+   ---
+   layout: wiki
+   title: Your Page Title
+   description: Brief description of the page
+   category: Guide
+   order: 2
+   ---
+   ```
+3. Write your content using standard Markdown
+
+### Navigation Structure
+
+The sidebar navigation can be configured in two ways:
+
+#### Automatic Navigation
+If no `_data/wiki_nav.yml` file exists, pages are automatically listed based on their `order` front matter.
+
+#### Custom Navigation
+Create `_data/wiki_nav.yml` to define custom navigation structure:
+
+```yaml
+sections:
+  - title: Getting Started
+    icon: fas fa-rocket
+    pages:
+      - title: Introduction
+        url: /pages/docs/
+        icon: fas fa-home
+      - title: Installation
+        url: /pages/docs/installation
+        icon: fas fa-download
+```
+
+## Content Guidelines
+
+### Headings
+
+Use heading levels 2-4 for your content structure:
+
+```markdown
+## Main Section
+### Subsection
+#### Detail Level
+```
+
+### Callout Boxes
+
+Use Bootstrap alerts for important information:
+
+```html
+<div class="alert alert-info" role="alert">
+  <i class="fas fa-info-circle me-2"></i>
+  <strong>Note:</strong> This is an informational callout.
+</div>
+```
+
+### Code Examples
+
+Use fenced code blocks with syntax highlighting:
+
+```javascript
+function example() {
+  console.log("Hello, world!");
+}
+```
+
+## Best Practices
+
+1. **Keep pages focused**: Each page should cover a specific topic
+2. **Use descriptive titles**: Make page titles clear and searchable
+3. **Add descriptions**: Include helpful descriptions in front matter
+4. **Organize logically**: Use categories and ordering to structure content
+5. **Link between pages**: Create connections between related topics
+
+---
+
+<div class="alert alert-success" role="alert">
+  <i class="fas fa-check-circle me-2"></i>
+  <strong>Success!</strong> You're ready to start creating great documentation with this wiki system.
+</div>

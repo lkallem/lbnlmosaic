@@ -3,7 +3,7 @@ layout: default
 title: Mermaid Demo
 permalink: /mermaid-demo/
 navbar: true
-order: 3
+order: 4
 ---
 
 # Mermaid Diagram Examples

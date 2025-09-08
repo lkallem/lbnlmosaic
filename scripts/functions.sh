@@ -283,8 +283,8 @@ show_configuration_summary() {
 
 # Function to create necessary directories
 create_directories() {
-    echo "📁 Creating directories..."
-    mkdir -p _layouts _includes _data assets/css assets/images assets/logos pages
+    echo "📁 Creating asset directories..."
+    mkdir -p assets/images assets/logos
 }
 
 # Function to process template files
@@ -317,6 +317,12 @@ process_template() {
     if [[ ! -f "$template_file" ]]; then
         echo "⚠️  Template file not found: $template_file"
         return 1
+    fi
+    
+    # Create parent directories if they don't exist
+    local output_dir=$(dirname "$output_file")
+    if [[ "$output_dir" != "." ]]; then
+        mkdir -p "$output_dir"
     fi
     
     # Use a safer delimiter for sed that's unlikely to appear in URLs

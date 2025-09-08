@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+<head>
+    {% include header.html %}
+    
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-body-secondary sidebar collapse" id="wiki-sidebar">
+                <div class="position-sticky pt-3 vh-100 overflow-auto">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="sidebar-heading text-muted">
+                            <i class="fas fa-book me-2"></i>Documentation
+                        </h6>
+                        <button class="btn btn-sm btn-outline-secondary d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#wiki-sidebar" aria-expanded="false">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Breadcrumb Navigation -->
+                    {% if page.breadcrumbs %}
+                    <nav aria-label="breadcrumb" class="mb-3">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="{{ '/' | relative_url }}"><i class="fas fa-home"></i></a>
+                            </li>
+                            {% for crumb in page.breadcrumbs %}
+                                {% if forloop.last %}
+                                    <li class="breadcrumb-item active" aria-current="page">{{ crumb.title }}</li>
+                                {% else %}
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ crumb.url | relative_url }}">{{ crumb.title }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ol>
+                    </nav>
+                    {% endif %}
+                    
+                    <!-- Wiki Navigation Menu using Bootstrap List Group -->
+                    {% if site.data.wiki_nav %}
+                        {% for section in site.data.wiki_nav.sections %}
+                            <div class="mb-3">
+                                {% if section.title %}
+                                    <h6 class="text-muted text-uppercase fw-bold small">
+                                        {% if section.icon %}<i class="{{ section.icon }} me-2"></i>{% endif %}
+                                        {{ section.title }}
+                                    </h6>
+                                {% endif %}
+                                <div class="list-group list-group-flush">
+                                    {% for item in section.pages %}
+                                        <a href="{{ item.url | relative_url }}" 
+                                           class="list-group-item list-group-item-action {% if page.url == item.url %}active{% endif %}">
+                                            {% if item.icon %}<i class="{{ item.icon }} me-2"></i>{% endif %}
+                                            {{ item.title }}
+                                        </a>
+                                        {% if item.children and page.url contains item.url %}
+                                            {% for child in item.children %}
+                                                <a href="{{ child.url | relative_url }}" 
+                                                   class="list-group-item list-group-item-action ps-4 {% if page.url == child.url %}active{% endif %}">
+                                                    {{ child.title }}
+                                                </a>
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <!-- Fallback navigation - auto-generate from pages -->
+                        <div class="list-group list-group-flush">
+                            {% assign wiki_pages = site.pages | where: "layout", "wiki" | sort: "order" %}
+                            {% for wiki_page in wiki_pages %}
+                                <a href="{{ wiki_page.url | relative_url }}" 
+                                   class="list-group-item list-group-item-action {% if page.url == wiki_page.url %}active{% endif %}">
+                                    {{ wiki_page.title | default: wiki_page.name }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    
+                    <!-- Page Table of Contents -->
+                    {% if page.toc != false %}
+                    <div class="mt-4">
+                        <h6 class="text-muted text-uppercase fw-bold small">
+                            <i class="fas fa-list me-2"></i>On This Page
+                        </h6>
+                        <div id="wiki-toc"></div>
+                    </div>
+                    {% endif %}
+                </div>
+            </nav>
+            
+            <!-- Main Content Area -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="main-content">
+                <!-- Mobile sidebar toggle -->
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 d-md-none">
+                    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#wiki-sidebar" aria-expanded="false">
+                        <i class="fas fa-bars me-2"></i>Menu
+                    </button>
+                </div>
+                
+                <!-- Page Header -->
+                <div class="border-bottom pb-3 mb-4">
+                    {% if page.category %}
+                        <span class="badge bg-secondary mb-2">{{ page.category }}</span>
+                    {% endif %}
+                    
+                    <h1 class="display-4 fw-light">{{ page.title }}</h1>
+                    
+                    {% if page.description %}
+                        <p class="lead text-muted">{{ page.description }}</p>
+                    {% endif %}
+                    
+                    {% if page.last_modified_at or page.author %}
+                        <div class="text-muted small">
+                            {% if page.author %}
+                                <i class="fas fa-user me-1"></i>{{ page.author }}
+                            {% endif %}
+                            {% if page.last_modified_at %}
+                                {% if page.author %} • {% endif %}
+                                <i class="fas fa-clock me-1"></i>Updated {{ page.last_modified_at | date: "%B %d, %Y" }}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Wiki Content -->
+                <article class="content">
+                    {{ content }}
+                </article>
+                
+                <!-- Page Navigation -->
+                {% if page.prev_page or page.next_page %}
+                <nav class="wiki-pagination mt-5 pt-4 border-top">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {% if page.prev_page %}
+                                <a href="{{ page.prev_page.url | relative_url }}" class="btn btn-outline-primary">
+                                    <i class="fas fa-arrow-left me-2"></i>{{ page.prev_page.title }}
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            {% if page.next_page %}
+                                <a href="{{ page.next_page.url | relative_url }}" class="btn btn-outline-primary">
+                                    {{ page.next_page.title }}<i class="fas fa-arrow-right ms-2"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </nav>
+                {% endif %}
+                
+                <!-- Optional: Edit on GitHub link (uncomment and configure if needed) -->
+                {% comment %}
+                {% if site.github_username and site.github_repo and page.path %}
+                <div class="wiki-edit mt-4 pt-3 border-top text-muted small">
+                    <a href="https://github.com/{{ site.github_username }}/{{ site.github_repo }}/edit/main/{{ page.path }}" target="_blank" class="text-decoration-none">
+                        <i class="fab fa-github me-1"></i>Edit this page on GitHub
+                    </a>
+                </div>
+                {% endif %}
+                {% endcomment %}
+            </main>
+        </div>
+    </div>
+    
+    {% include footer.html %}
+    
+    {% include scripts.html %}
+    
+    <!-- Wiki-specific JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-generate table of contents
+            if (document.getElementById('wiki-toc')) {
+                generateWikiTOC();
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+        
+        function generateWikiTOC() {
+            const headings = document.querySelectorAll('.content h2, .content h3, .content h4');
+            const tocContainer = document.getElementById('wiki-toc');
+            
+            if (headings.length === 0) {
+                tocContainer.parentElement.style.display = 'none';
+                return;
+            }
+            
+            const tocList = document.createElement('div');
+            tocList.className = 'list-group list-group-flush';
+            
+            headings.forEach((heading, index) => {
+                // Create ID if it doesn't exist
+                if (!heading.id) {
+                    heading.id = 'heading-' + index;
+                }
+                
+                const link = document.createElement('a');
+                link.className = 'list-group-item list-group-item-action py-1 small';
+                link.href = '#' + heading.id;
+                link.textContent = heading.textContent;
+                
+                // Add indentation based on heading level
+                if (heading.tagName === 'H3') {
+                    link.classList.add('ps-3');
+                } else if (heading.tagName === 'H4') {
+                    link.classList.add('ps-4');
+                }
+                
+                tocList.appendChild(link);
+            });
+            
+            tocContainer.appendChild(tocList);
+        }
+    </script>
+</body>
+</html>
