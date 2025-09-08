@@ -293,27 +293,20 @@ process_templates() {
     
     local template_dir="$SCRIPT_DIR/templates"
     
-    # Process each template file
-    process_template "$template_dir/_config.yml.template" "_config.yml"
-    process_template "$template_dir/Gemfile.template" "Gemfile"
-    process_template "$template_dir/index.md.template" "index.md"
-    
-    # Process directory templates
-    process_template "$template_dir/_layouts/default.html.template" "_layouts/default.html"
-    process_template "$template_dir/_includes/navbar.html.template" "_includes/navbar.html"
-    process_template "$template_dir/_data/sponsors.yaml.template" "_data/sponsors.yaml"
-    process_template "$template_dir/assets/css/main.scss.template" "assets/css/main.scss"
-    
-    # Process all page templates dynamically
-    if [[ -d "$template_dir/pages" ]]; then
-        for page_template in "$template_dir/pages"/*.template; do
-            if [[ -f "$page_template" ]]; then
-                # Extract filename without path and .template extension
-                local page_name=$(basename "$page_template" .template)
-                process_template "$page_template" "pages/$page_name"
-            fi
-        done
-    fi
+    # Find all .template files recursively and process them
+    while IFS= read -r -d '' template_file; do
+        # Get the relative path from the templates directory
+        local relative_path="${template_file#$template_dir/}"
+        # Remove the .template extension to get the output path
+        local output_path="${relative_path%.template}"
+        
+        # Special case: gitignore.template -> .gitignore
+        if [[ "$output_path" == "gitignore" ]]; then
+            output_path=".gitignore"
+        fi
+        
+        process_template "$template_file" "$output_path"
+    done < <(find "$template_dir" -name "*.template" -type f -print0)
 }
 
 # Function to process a single template file
@@ -349,12 +342,6 @@ process_template() {
     echo "   ✓ Created $output_file"
 }
 
-# Function to create .gitignore
-create_gitignore() {
-    echo "🚫 Creating .gitignore..."
-    cp "$SCRIPT_DIR/templates/gitignore.template" ".gitignore"
-    echo "   ✓ Created .gitignore"
-}
 
 # Function to show deployment instructions
 show_deployment_instructions() {

@@ -104,9 +104,6 @@ create_directories
 # Process and copy template files
 process_templates
 
-# Create .gitignore
-create_gitignore
-
 # Check for required logos
 check_required_logos
 

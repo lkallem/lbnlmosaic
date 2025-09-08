@@ -1,0 +1,50 @@
+<footer class="mt-auto py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <div class="text-center text-md-start">
+                    <p class="mb-1">&copy; {{ 'now' | date: "%Y" }} <a href="https://www.lbl.gov/" target="_blank">Lawrence Berkeley National Laboratory</a>. Built with
+                        <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> and <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>.</p>
+                    <p class="mb-0"><small>This site follows the <a href="https://creative.lbl.gov/visual-identity/" target="_blank">LBNL Visual Identity Guidelines</a></small></p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex justify-content-center justify-content-md-end align-items-center flex-wrap">
+                    <div class="sponsor-logos">
+                        {% assign sorted_sponsors = site.data.sponsors.sponsors | sort: "order" | reverse %}
+                        {% for sponsor in sorted_sponsors %}
+                            <a href="{{ sponsor.url }}" target="_blank" class="logo-link" title="{{ sponsor.alt }}">
+                                <img src="{{ '/assets/logos/' | append: sponsor.logo | relative_url }}" alt="{{ sponsor.alt }}" class="sponsor-logo">
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Legal/Funding Acknowledgment Accordion -->
+        {% if site.funding_acknowledgment and site.funding_acknowledgment != '' %}
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="accordion" id="legalAccordion">
+                    <div class="accordion-item border-0">
+                        <h2 class="accordion-header" id="legalHeading">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#legalCollapse" aria-expanded="false" aria-controls="legalCollapse">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Funding & Legal Information
+                            </button>
+                        </h2>
+                        <div id="legalCollapse" class="accordion-collapse collapse" aria-labelledby="legalHeading" data-bs-parent="#legalAccordion">
+                            <div class="accordion-body">
+                                <div class="small">
+                                    {{ site.funding_acknowledgment | markdownify }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</footer>
