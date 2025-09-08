@@ -3,7 +3,6 @@
 # LBNL Jekyll Template Functions
 
 # Global variables for user preferences
-BOOTSWATCH_THEME=""
 ACCENT_COLOR=""
 ACCENT_COLOR_NAME=""
 SITE_BASEURL=""
@@ -12,44 +11,6 @@ SITE_TITLE=""
 SITE_DESCRIPTION=""
 GITHUB_USERNAME=""
 GITHUB_REPO=""
-
-# Function to display Bootswatch theme options
-show_bootswatch_options() {
-    echo "🎨 Available Bootswatch Themes:"
-    echo "Visit https://bootswatch.com/ to preview all themes"
-    echo ""
-    echo "Popular options:"
-    echo "1. Flatly (Default) - Clean, modern theme"
-    echo "2. Spacelab - Professional look with subtle gradients"
-    echo "3. Cosmo - Minimalist design"
-    echo "4. Litera - Clean typography-focused theme"
-    echo "5. Materia - Material Design inspired"
-    echo "6. Sandstone - Warm, friendly appearance"
-    echo "7. Simplex - Ultra-minimal design"
-    echo "8. United - Ubuntu-inspired theme"
-    echo "9. Custom - Enter your own theme name"
-    echo ""
-}
-
-# Function to get theme name
-get_theme_name() {
-    local choice=$1
-    case $choice in
-        1|"") echo "flatly";;
-        2) echo "spacelab";;
-        3) echo "cosmo";;
-        4) echo "litera";;
-        5) echo "materia";;
-        6) echo "sandstone";;
-        7) echo "simplex";;
-        8) echo "united";;
-        9) 
-            read -p "Enter custom theme name: " custom_theme
-            echo "$custom_theme"
-            ;;
-        *) echo "flatly";;
-    esac
-}
 
 # Function to display color options
 show_color_options() {
@@ -102,15 +63,6 @@ get_color_name() {
 
 # Function to get all user preferences
 get_user_preferences() {
-    # Theme selection
-    show_bootswatch_options
-    read -p "Choose your Bootswatch theme (1-9, or press Enter for Flatly): " theme_choice
-    BOOTSWATCH_THEME=$(get_theme_name "$theme_choice")
-    
-    echo ""
-    echo "🎨 Selected theme: $BOOTSWATCH_THEME"
-    echo ""
-    
     # Color selection
     show_color_options
     read -p "Choose your accent color (1-9, or press Enter for Orange): " color_choice
@@ -320,7 +272,6 @@ show_configuration_summary() {
     echo "========================"
     echo "Site Title: $SITE_TITLE"
     echo "Description: $SITE_DESCRIPTION"
-    echo "Theme: $BOOTSWATCH_THEME"
     echo "Accent Color: $ACCENT_COLOR_NAME"
     echo "Base URL: ${SITE_BASEURL:-'(automatic)'}"
     echo "Site URL: ${SITE_URL:-'(automatic)'}"
@@ -389,7 +340,6 @@ process_template() {
         -e "s|{{SITE_DESCRIPTION}}|$safe_description|g" \
         -e "s|{{SITE_BASEURL}}|$safe_baseurl|g" \
         -e "s|{{SITE_URL}}|$safe_url|g" \
-        -e "s|{{BOOTSWATCH_THEME}}|$BOOTSWATCH_THEME|g" \
         -e "s|{{ACCENT_COLOR}}|$ACCENT_COLOR|g" \
         -e "s|{{ACCENT_COLOR_NAME}}|$ACCENT_COLOR_NAME|g" \
         -e "s|{{GITHUB_USERNAME}}|$safe_github_username|g" \

@@ -7,7 +7,7 @@ A professional Jekyll template for Lawrence Berkeley National Laboratory researc
 - **🔬 LBNL Brand Compliant**: Follows official [LBNL Visual Identity Guidelines](https://creative.lbl.gov/visual-identity/)
 - **📱 Responsive Design**: Mobile-first Bootstrap framework with Bootswatch themes
 - **🌙 Dark Mode**: Automatic system preference detection with manual toggle
-- **🎨 Customizable**: Choose from 8+ Bootswatch themes and 9 LBNL accent colors
+- **🎨 Customizable**: Choose from 9 LBNL accent colors
 - **🏢 Sponsor Integration**: Dynamic sponsor logo display from YAML configuration
 - **♿ Accessible**: WCAG compliant with proper ARIA labels and keyboard navigation
 - **🚀 GitHub Pages Ready**: Optimized for seamless GitHub Pages deployment
@@ -64,10 +64,9 @@ Perfect for adding a Jekyll site to an existing repository:
 
 The `setup.sh` script will guide you through:
 
-1. **Theme Selection**: Choose from 8+ Bootswatch themes
-2. **Color Customization**: Pick your LBNL accent color
-3. **Site Configuration**: Set title, description, and URLs
-4. **GitHub Integration**: Auto-detect or manually configure repository settings
+1. **Color Customization**: Pick your LBNL accent color
+2. **Site Configuration**: Set title, description, and URLs
+3. **GitHub Integration**: Auto-detect or manually configure repository settings
 
 The script will:
 - ✅ Generate all Jekyll files with your preferences
@@ -340,4 +339,4 @@ bundle install
 
 - **Jekyll**: https://jekyllrb.com/docs/
 - **Bootstrap**: https://getbootstrap.com/docs/
-- **LBNL Guidelines**: https://creative.lbl.gov/visual-identity/
+- **LBNL Visual Identity**: https://creative.lbl.gov/visual-identity/

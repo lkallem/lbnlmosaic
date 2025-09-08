@@ -70,7 +70,6 @@ fi
 # Get user preferences
 if [[ "$AUTO_YES" == "true" ]]; then
     echo "🚀 Auto-mode: Using default settings..."
-    BOOTSWATCH_THEME="flatly"
     ACCENT_COLOR=$(get_color_variables "1")
     ACCENT_COLOR_NAME=$(get_color_name "1")
     SITE_TITLE="My Research Project"
@@ -79,7 +78,6 @@ if [[ "$AUTO_YES" == "true" ]]; then
     SITE_URL=""
     GITHUB_USERNAME=""
     GITHUB_REPO=""
-    echo "   ✓ Theme: $BOOTSWATCH_THEME"
     echo "   ✓ Accent Color: $ACCENT_COLOR_NAME"
     echo "   ✓ Site Title: $SITE_TITLE"
     echo "   ✓ Funding Acknowledgment: (none - legal footer disabled)"
@@ -132,7 +130,6 @@ echo ""
 echo "✅ LBNL Jekyll site setup complete!"
 echo ""
 echo "📋 Configuration:"
-echo "   Theme: $BOOTSWATCH_THEME"
 echo "   Accent Color: $ACCENT_COLOR_NAME"
 echo "   Base URL: ${SITE_BASEURL:-'(automatic)'}"
 echo "   Site URL: ${SITE_URL:-'(automatic)'}"
