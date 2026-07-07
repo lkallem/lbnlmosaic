@@ -1,0 +1,34 @@
+$color-scheme: lbnl-dark;
+
+// Primary colors from LBNL Visual Identity palette
+// DARK BLUE #00313C, TEAL #007681, LIGHT GRAY #B1B3B3, DARK GRAY #63666A
+
+$body-background-color: #2b2d42;
+$body-heading-color: #edf2fb;
+$body-text-color: #8d99ae;
+$link-color: #5ca7dd;
+$nav-child-link-color: #8d99ae;
+
+// Sidebar / header backgrounds
+$sidebar-color: #00313C;
+$header-background-color: $sidebar-color;
+$feedback-color: darken($sidebar-color, 5%);
+
+// UI elements — buttons & components
+$base-button-color: #004350;
+$btn-primary-color: #007681;
+$text-inverse-color: #edf2fb;
+
+// Code & tables
+$code-background-color: #1a1b31;
+$code-linenumber-color: #6fa3ad;
+$table-background-color: darken($body-background-color, 5%);
+
+// Search
+$search-background-color: darken($sidebar-color, 10%);
+$search-result-preview-color: $body-text-color;
+
+// Borders & dividers
+$border-color: darken($sidebar-color, 20%);
+
+@import "./vendor/accessible-pygments/github-dark";

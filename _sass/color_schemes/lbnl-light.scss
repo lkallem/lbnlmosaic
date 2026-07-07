@@ -1,0 +1,36 @@
+$color-scheme: lbnl-light;
+
+// LBNL Light Color Scheme
+// Based on LBNL Visual Identity Primary & Secondary Palettes
+// DARK BLUE #00313C, TEAL #007681, LIGHT GRAY #B1B3B3, DARK GRAY #63666A
+
+
+// Primary colors from LBNL palette
+$body-background-color: #ffffff;            // White background
+$body-heading-color: #00313C;               // DARK BLUE (primary LBNL)
+$body-text-color: #63666a;                  // DARK GRAY
+$link-color: #007681;                       // TEAL — primary brand accent for links
+$nav-child-link-color: #63666a;             // Dark Gray
+
+// Sidebar / header backgrounds
+$sidebar-color: #f4f5f7;                    // Very light gray with cool tint
+$header-background-color: $sidebar-color;    // Match sidebar for top header
+$feedback-color: darken($sidebar-color, 3%);
+
+// UI elements — buttons & components
+$base-button-color: #eef0f4;                // Light button backgrounds
+$btn-primary-color: #007681;                 // TEAL (primary LBNL accent)
+$text-inverse-color: #ffffff;               // White text on dark buttons
+
+// Code & tables
+$code-background-color: #fafbfc;            // Near-white code background
+$table-background-color: #f4f5f7;           // Light gray table bg
+
+// Search
+$search-background-color: #ffffff;           // White for search field  
+$search-result-preview-color: #63666a;       // Dark Gray text preview
+
+// Borders & dividers
+$border-color: #dde1e5;                      // LBNL gray-adjacent border for readability on light bg
+
+@import "./vendor/accessible-pygments/github-light";
