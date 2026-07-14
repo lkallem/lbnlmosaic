@@ -6,20 +6,43 @@ permalink: /
 ---
 
 <div style="display: flex; align-items: center;">
-  <img src="{{ 'assets/logos/your-logo.png' | relative_url }}" alt="Your Logo" style="max-height: 100px">&nbsp;&nbsp;
-  <h2>Welcome to the Your Project</h2>
+  <img src="{{ 'assets/logos/mosaiclogo.png' | relative_url }}" alt="Your Logo" style="max-height: 100px">&nbsp;&nbsp;
+  <h2>Modular System for Acceleration Integration (MoSAIC)</h2>
 </div>
+
+*A Multi-Tiled Architecture for Accurate and Fast Message-Driven Computing Exploration by LBNL.*
+
+[<i class="fa-brands fa-github"></i> Github]({{ site.github_repo }}){:target="_blank" .btn .btn-purple .mr-2}
+[<i class="fa-brands fa-readme"></i> Documentation]({{ '/docs' | relative_url }}){: .btn .btn-blue .mr-2}
+[<i class="fa-solid fa-chalkboard"></i> Learn More]({{ '/Research' | relative_url }}){: .btn .btn-primary .mr-2}
+
+<div style="display: flex; justify-content: center;">
+  <img src="{{ 'assets/images/Processors talking.png' | relative_url }}" alt="Processors talking" style="max-height: 400px">
+</div>
+
 
 ### About This Project
 
-*Replace this section with a brief description of your research project, its goals, and its significance to Berkeley Lab's mission.*
+<!-- - MoSAIC is a multi-tiled architecture for accurate and fast message-driven computing exploration. -->
+- MoSAIC is written in SystemVerilog.
+- Each tile can house a lightweight RISCV processor such as the PICORV32 or a generic accelerator.
+- The tiles are connected through a lightweight network on chip (NoC) following an AXIStream protocol.
+- Each tile has a hardware message queue for inter-tile communication used for message-driven computation.
+- A RISCV ISA extension enables straight access to the physical message queue or remote memory through C/C++ primitives (qPut, qGet, qWait, qPoll, mPut, mGet).
+- Partitioned global address scheme (PGAS). 
+
 
 <div class="card-grid">
-  <a href="" class="site-card" target="_blank"><i class="fas fa-fire-flame-curved" style="color: #e25822;"></i><div class="card-title">Font Awesome Icon Key Feature 1</div><p>Describe a major feature or capability of your project.</p></a>
-  <a href="" class="site-card" target="_blank">2️⃣<div class="card-title">Emoji Icon Key Feature 2</div><p>Describe another important aspect of your work.</p></a>
+  <a href="https://lbnlcomputerarch.github.io/docs/" class="site-card" target="_blank">🗂️<div class="card-title">Access our Resources</div><p> Guides on connecting to our servers via SSH, using a remote graphical desktop via VNC or XRDP, and others.</p></a>
+  <a href="/docs/dependencies.html" class="site-card" target="_blank">📦<div class="card-title">Dependencies</div><p>Not using our servers? Find out what tools you need!</p></a>
+  <a href="/docs/getting-started/" class="site-card" target="_blank">🚀<div class="card-title">Getting Started</div><p>Use MoSAIC!</p></a>
+  <a href="/people/" class="site-card" target="_blank">🔎<div class="card-title">About Us</div><p>Meet the people behind MoSAIC!</p></a>
 </div>
 
-{: .highlight-title}
-> Getting Started
+{: .new-title }
+> New to MoSAIC?
 >
-> Add instructions here for how users can get started with your project, access your data, or use your tools.
+> 1. Start with *Documentation → Getting Started*
+> 2. Find tutorials in *Documentation → Using MoSAIC*
+
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;[<i class="fa-solid fa-arrow-right-long"></i> Continue]({{ '/docs' | relative_url }}){: .btn .btn-light .mr-2}

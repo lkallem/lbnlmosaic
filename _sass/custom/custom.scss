@@ -76,3 +76,37 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 }
+
+// ==========================================================================
+// MoSAIC background image (migrated from lbnlmosaic)
+// ==========================================================================
+// NOTE: the actual `background-image: url(...)` rule lives in
+// _includes/head_custom.html, which is rendered through Liquid and can use
+// the `relative_url` filter to get the correct path in both local and
+// GitHub Pages environments. The rules below only handle making sure
+// content stays readable over that background image, using this template's
+// own color-scheme variables (not MoSAIC's original palette) so it still
+// respects the lbnl-light/lbnl-dark toggle.
+
+// .side-bar itself spans a wide flexible box (wider than its nav content on
+// large screens); let the background show through it, and instead paint
+// solid backgrounds on the actual content pieces inside it.
+.side-bar {
+  background-color: transparent !important;
+}
+
+.site-nav {
+  background-color: $sidebar-color;
+}
+
+// .main has no background by default in this layout; give it a solid,
+// opaque background to ensure text stays readable over the image.
+.main {
+  background-color: $body-background-color;
+}
+
+// Keep header/search bar solid too, since they sit inside .main but are
+// visually distinct bands.
+.main-header {
+  background-color: $body-background-color;
+}

@@ -28,7 +28,7 @@ color_scheme: lbnl-light  # Or 'lbnl-dark'
 
 ### Branding & Logos
 
-- **Project Logo**: Update `logo: "assets/logos/your-logo.png"` in `_config.yml`.
+- **Project Logo**: Update `logo: "assets/logos/mosaiclogo.png"` in `_config.yml`.
 - **Top Banner Links**: Customize the `aux_links` section in `_config.yml` to add official links to LBNL, AMCR, or your project.
 - **Favicons**: To update the site icons, use a generator like [RealFaviconGenerator](https://realfavicongenerator.net/) or [favicon.io](https://favicon.io) and replace the files in `assets/favicon/`.
 

@@ -1,17 +1,17 @@
-title: Your Project
-description: A description of your project.
+title: MoSAIC-P38
+description: A multi-tiled architecture for accurate and fast message-driven computing exploration.
 theme: just-the-docs
 
 baseurl: ""
-url: "https://your-project.github.io" # Your GitHub Pages URL
+url: "https://lkallem.github.io/lbnlmosaic/" # Your GitHub Pages URL
 
 # color_scheme: lbnl-dark   # LBNL Dark mode theme
 color_scheme: lbnl-light    # LBNL Light mode theme
 
-logo: "assets/logos/your-logo.png"
-favicon_ico: "/assets/favicon/favicon.ico"
+logo: "assets/logos/mosaiclogo.png"
+favicon_ico: "/assets/favicon/mosaiclogo.png"
 
-search_enabled: false
+search_enabled: true
 heading_anchors: true
 enable_copy_code_button: true
 
@@ -24,6 +24,7 @@ aux_links:
   "Official CAG Site": https://amcr.lbl.gov/departments/computer-science-department/cag/
   "AMCR": https://amcr.lbl.gov/
   "LBNL": https://www.lbl.gov/
+  "MoSAIC on GitHub": https://github.com/lbnlcomputerarch/MoSAIC-P38
 aux_links_new_tab: true
 
 callouts:

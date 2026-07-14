@@ -5,82 +5,48 @@ parent: Documentation
 permalink: /docs/getting-started
 nav_order: 1
 ---
+# Getting Started
 
-## Getting Started
+## Verifying Proper Installation
+1. Go to `/tools/generate`
+2. Execute `perl mosaic_2x2_vivado.pl` in the command line.
 
-Welcome to the Your Project documentation! This guide will help you get started with our wiki-style documentation system.
+If successful, you should see `INFO: Finish without errors`.
 
-### Overview
-
-This documentation system is built with Jekyll and Bootstrap, providing a clean and professional way to organize your project documentation.
-
-#### Key Features
-
-- **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
-- **Automatic Navigation**: Sidebar navigation with active state highlighting
-- **LBNL Branding**: Integrated with LBNL visual identity guidelines
-
-### Quick Start
-
-#### Creating New Wiki Pages
-
-1. Create a new Markdown file in the `docs/` directory
-2. Add the required front matter:
-   ```yaml
-   ---
-   layout: page
-   title: Your Page Title
-   parent: Documentation
-   nav_order: 2
-   ---
-   ```
-3. Write your content using standard Markdown
-
-### Content Guidelines
-
-#### Headings
-
-Use heading levels 2-4 for your content structure:
-
-```markdown
-## Main Section
-### Subsection
-#### Detail Level
-```
-
-#### Callout Boxes
-
-Use [Just the Docs callouts](https://just-the-docs.com/docs/ui-components/callouts/) for important information:
-
-```markdown
-{: .note}
-> This is an informational callout.
-```
-
-{: .note}
-> This is an informational callout.
-
-### Code Examples
-
-Use fenced code blocks with syntax highlighting:
-
-```javascript
-function example() {
-  console.log("Hello, world!");
-}
-```
-
-## Best Practices
-
-1. **Keep pages focused**: Each page should cover a specific topic
-2. **Use descriptive titles**: Make page titles clear and searchable
-3. **Add descriptions**: Include helpful descriptions in front matter
-4. **Organize logically**: Use categories and ordering to structure content
-5. **Link between pages**: Create connections between related topics
-
----
-
-{: .new-title}
-> Success!
+{: .warning-title}
+> Note
 >
-> You're ready to start creating great documentation with this wiki system.
+> If you are not using our servers, you may need to reset the tools path as specified by the `$MosaicGlobal` param in `tools/generate/gen_mosaic.pm`. 
+>
+> You may also need to change the source of the tools as indicated by line 25 in `vivado/launch_sim.sh`.
+
+
+## Using Vivado
+
+{: .warning-title}
+> Note
+>
+> Do step 1 only if using our servers.
+
+### 1. Access a remote graphical desktop. 
+[Guide here.](https://lbnlcomputerarch.github.io/docs/) 
+### 2. Run the Commands
+In your remote desktop, run:
+```
+source /tools/source-vitis.sh 2022.2
+```
+If the above was successful, run:
+```
+vivado
+```
+### 3. Open the project
+Open `MoSAIC_P38/vivado/mosaic`
+
+### 4. Top level file
+Open `Simulation sources → sim_1`. If `tb_mosaic.sv` is not the top level file, set it as the top level file (right click → set as top)
+
+
+<div style="display: flex; justify-content: space-between;">
+  <a href="{{ '/docs/dependencies' | relative_url }}" class="btn btn-light mr-2"><i class="fa-solid fa-arrow-left-long"></i> Go back</a>
+  <a href="{{ '/docs/using-mosaic' | relative_url }}" class="btn btn-light mr-2"><i class="fa-solid fa-arrow-right-long"></i> Continue</a>
+</div>

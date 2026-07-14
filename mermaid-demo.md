@@ -2,7 +2,7 @@
 layout: page
 title: Mermaid Demo
 permalink: /mermaid-demo/
-nav_order: 4
+nav_order: 6
 ---
 
 ## Mermaid Diagram Examples

@@ -2,13 +2,16 @@
 layout: page
 title: Documentation
 permalink: /docs/
-nav_order: 3
+nav_order: 2
 has_children: true
 ---
 
-## Your Project Documentation
+## Documentation
+Welcome to MoSAIC's documentation!
 
-Welcome to the comprehensive documentation for Your Project. This documentation is designed to help you understand, configure, and extend our project.
+<div style="display: flex; justify-content: center;">
+  <img src="{{ '/assets/images/MoSAIC Overview.png' | relative_url }}" alt="Processors talking" style="max-height: 400px">
+</div>
 
 ### What You'll Find Here
 
@@ -21,3 +24,8 @@ Welcome to the comprehensive documentation for Your Project. This documentation 
 > Need Help?
 >
 > If you can't find what you're looking for, [contact our team]({{ '/contact' | relative_url }})
+
+<div style="display: flex; justify-content: space-between;">
+  <a href="{{ '../' | relative_url }}" class="btn btn-light mr-2"><i class="fa-solid fa-arrow-left-long"></i> Go back</a>
+  <a href="{{ '/docs/dependencies' | relative_url }}" class="btn btn-light mr-2"><i class="fa-solid fa-arrow-right-long"></i> Continue</a>
+</div>

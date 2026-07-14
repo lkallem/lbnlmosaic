@@ -1,13 +1,13 @@
 ---
 layout: page
-title: About
-nav_order: 2
-permalink: /about/
+title: People
+nav_order: 4
+permalink: /people/
 ---
 
-## About Our Research
+## People
 
-{: .highlight-title}
+{: .note-title}
 > Project Overview
 >
 > Replace this with a comprehensive description of your research project, its objectives, and its place within Berkeley Lab's scientific mission.
@@ -46,3 +46,7 @@ permalink: /about/
 ### Funding
 
 *Acknowledge funding sources, grants, or sponsors that support this research.*
+
+<div style="display: flex; justify-content: space-between;">
+  <a href="{{ '/research' | relative_url }}" class="btn btn-light mr-2"><i class="fa-solid fa-arrow-left-long"></i> Go back</a>
+</div>
