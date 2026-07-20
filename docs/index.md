@@ -6,7 +6,7 @@ nav_order: 2
 has_children: true
 ---
 
-## Documentation
+# Documentation
 Welcome to MoSAIC's documentation!
 
 <div style="display: flex; justify-content: center;">
@@ -23,7 +23,7 @@ Welcome to MoSAIC's documentation!
 {: .warning-title}
 > Need Help?
 >
-> If you can't find what you're looking for, [contact our team]({{ '/contact' | relative_url }})
+> If you can't find what you're looking for, [contact our team]({{ '/people' | relative_url }})
 
 <div style="display: flex; justify-content: space-between;">
   <a href="{{ '../' | relative_url }}" class="btn btn-light mr-2"><i class="fa-solid fa-arrow-left-long"></i> Go back</a>

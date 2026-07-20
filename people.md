@@ -5,7 +5,77 @@ nav_order: 4
 permalink: /people/
 ---
 
-## People
+# People
+
+## Staff
+<div class="card-grid">
+  <a href="https://amcr.lbl.gov/profile/lg4er/" class="site-card" target="_blank">Creator<div class="card-title">Luisa Patricia Gonzalez Guerrero</div>
+  <br>
+  <div style="display: flex; justify-content: center;">
+    <img src="{{ 'assets/images/Default_pfp.jpg' | relative_url }}" alt="Patricia" style="max-height: 200px; max-width: 200px;">
+    </div>
+    <br>
+    <div style="display: flex; justify-content: center;">
+      <p>Research Scientist</p>
+    </div>
+    <div style="display: flex; justify-content: center;">
+    </div>
+  </a>
+  <a href="https://amcr.lbl.gov/profile/ioannou/" class="site-card" target="_blank">Contributor<div class="card-title">Angelos Ioannou</div>
+  <br>
+  <div style="display: flex; justify-content: center;">
+    <img src="{{ 'assets/images/Default_pfp.jpg' | relative_url }}" alt="Angelos" style="max-height: 200px; max-width: 200px;">
+    </div>
+    <br>
+    <div style="display: flex; justify-content: center;">
+      <p>Researcher</p>
+    </div>
+    <div style="display: flex; justify-content: center;">
+    </div>
+  </a>
+  <a href="https://amcr.lbl.gov/profile/ffard/" class="site-card" target="_blank">Contributor<div class="card-title">Farzad Fatollahi-Fard</div>
+  <br>
+  <div style="display: flex; justify-content: center;">
+    <img src="{{ 'assets/images/Default_pfp.jpg' | relative_url }}" alt="Farzad" style="max-height: 200px; max-width: 200px;">
+    </div>
+    <br>
+    <div style="display: flex; justify-content: center;">
+      <p>Computer Systems Engineer III</p>
+    </div>
+    <div style="display: flex; justify-content: center;">
+    </div>
+  </a>
+</div>
+
+## Interns
+  <div class="card-grid">
+  <a href="https://amcr.lbl.gov/profile/ffard/" class="site-card" target="_blank">Contributor<div class="card-title">Luis Pena</div>
+  <br>
+  <div style="display: flex; justify-content: center;">
+    <img src="{{ 'assets/images/Default_pfp.jpg' | relative_url }}" alt="Luis" style="max-height: 200px; max-width: 200px;">
+    </div>
+    <br>
+    <div style="display: flex; justify-content: center;">
+      <p>Graduate Student Affiliate</p>
+    </div>
+    <div style="display: flex; justify-content: center;">
+    </div>
+  </a>
+  <a href="" class="site-card" target="_blank">Contributor<div class="card-title">Laura Kallem</div>
+  <br>
+  <div style="display: flex; justify-content: center;">
+    <img src="{{ 'assets/images/Default_pfp.jpg' | relative_url }}" alt="Laura" style="max-height: 200px; max-width: 200px;">
+    </div>
+    <br>
+    <div style="display: flex; justify-content: center;">
+      <p>CCI Summer Intern 2025, 2026</p>
+    </div>
+    <div style="display: flex; justify-content: center;">
+    </div>
+  </a>
+
+</div>
+
 
 {: .note-title}
 > Project Overview

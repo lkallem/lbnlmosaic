@@ -3,7 +3,7 @@ description: A multi-tiled architecture for accurate and fast message-driven com
 theme: just-the-docs
 
 baseurl: ""
-url: "https://lbnlmosaic.github.io/" # Your GitHub Pages URL
+url: "https://lkallem.github.io/lbnlmosaic" # Your GitHub Pages URL
 
 # color_scheme: lbnl-dark   # LBNL Dark mode theme
 color_scheme: lbnl-light    # LBNL Light mode theme

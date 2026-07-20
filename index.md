@@ -12,7 +12,7 @@ permalink: /
 
 *A Multi-Tiled Architecture for Accurate and Fast Message-Driven Computing Exploration by LBNL.*
 
-[<i class="fa-brands fa-github"></i> Github]({{ site.github_repo }}){:target="_blank" .btn .btn-purple .mr-2}
+[<i class="fa-brands fa-github"></i> Github]({{ 'https://github.com/lbnlcomputerarch/MoSAIC-P38' }}){:target="_blank" .btn .btn-purple .mr-2}
 [<i class="fa-brands fa-readme"></i> Documentation]({{ '/docs' | relative_url }}){: .btn .btn-blue .mr-2}
 [<i class="fa-solid fa-chalkboard"></i> Learn More]({{ '/Research' | relative_url }}){: .btn .btn-primary .mr-2}
 
@@ -34,9 +34,9 @@ permalink: /
 
 <div class="card-grid">
   <a href="https://lbnlcomputerarch.github.io/docs/" class="site-card" target="_blank">🗂️<div class="card-title">Access our Resources</div><p> Guides on connecting to our servers via SSH, using a remote graphical desktop via VNC or XRDP, and others.</p></a>
-  <a href="/docs/dependencies.html" class="site-card" target="_blank">📦<div class="card-title">Dependencies</div><p>Not using our servers? Find out what tools you need!</p></a>
-  <a href="/docs/getting-started/" class="site-card" target="_blank">🚀<div class="card-title">Getting Started</div><p>Use MoSAIC!</p></a>
-  <a href="/people/" class="site-card" target="_blank">🔎<div class="card-title">About Us</div><p>Meet the people behind MoSAIC!</p></a>
+  <a href="/docs/dependencies" class="site-card" target="_blank">📦<div class="card-title">Dependencies</div><p>Not using our servers? Find out what tools you need!</p></a>
+  <a href="/docs/getting-started" class="site-card" target="_blank">🚀<div class="card-title">Getting Started</div><p>Use MoSAIC!</p></a>
+  <a href="/people" class="site-card" target="_blank">🔎<div class="card-title">About Us</div><p>Meet the people behind MoSAIC!</p></a>
 </div>
 
 {: .new-title }
@@ -45,4 +45,7 @@ permalink: /
 > 1. Start with *Documentation → Getting Started*
 > 2. Find tutorials in *Documentation → Using MoSAIC*
 
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;[<i class="fa-solid fa-arrow-right-long"></i> Continue]({{ '/docs' | relative_url }}){: .btn .btn-light .mr-2}
+<div style="display: flex; justify-content: right;">
+  <!-- <a href="{{ '/docs/using-mosaic' | relative_url }}" class="btn btn-light mr-2"><i class="fa-solid fa-arrow-left-long"></i> Go back</a> -->
+  <a href="{{ '/docs' | relative_url }}" class="btn btn-light mr-2"><i class="fa-solid fa-arrow-right-long"></i> Continue</a>
+</div>
